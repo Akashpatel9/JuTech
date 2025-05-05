@@ -110,24 +110,24 @@ const FeatureHighlightSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="w-full py-16 flex flex-col md:flex-row items-center justify-between gap-16"
+      className="w-full md:py-16 flex flex-col md:flex-row items-center justify-between gap-16"
     >
       {/* Left Text Content */}
       <motion.div 
         ref={leftContentRef}
-        className="w-1/2"
+        className="md:w-1/2"
         initial="hidden"
         animate={leftContentControls}
         variants={containerVariants}
       >
         <motion.h2 
-          className="text-4xl font-semibold leading-tight flex flex-col"
+          className="md:text-4xl font-semibold leading-tight flex flex-col"
           variants={itemVariants}
         >
-          <span className="text-5xl font-normal bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent">
+          <span className="md:text-5xl text-4xl font-normal bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent">
             Driven beyond limit,
           </span>
-          <span className="text-black text-5xl font-normal">
+          <span className="text-black md:text-5xl text-4xl font-normal">
             grounded in promise.
           </span>
         </motion.h2>
@@ -149,12 +149,12 @@ const FeatureHighlightSection = () => {
                 animate={hoveredFeature === idx ? { rotate: 360 } : {}}
                 transition={{ duration: 0.5 }}
               >
-                <img className="h-8 w-8" src={feature.icon} alt="" />
+                <img className="h-8 aspect-square" src={feature.icon} alt="" />
               </motion.div>
 
               <div>
                 <h4 className="font-medium text-xl text-[#0C0E12]">{feature.title}</h4>
-                <p className="font-normal text-xl text-[#646567]">{feature.description}</p>
+                <p className="font-normal md:text-xl text-[#646567]">{feature.description}</p>
               </div>
             </motion.div>
           ))}
@@ -164,7 +164,7 @@ const FeatureHighlightSection = () => {
       {/* Right Visual Content */}
       <motion.div 
         ref={rightContentRef}
-        className="relative w-1/2 h-[690px] rounded-3xl bg-[#F6F6F9] flex items-center justify-center overflow-hidden"
+        className="relative w-full md:w-1/2 h-[690px] rounded-3xl bg-[#F6F6F9] flex items-center justify-center overflow-hidden"
         initial={{ opacity: 0, x: 50 }}
         animate={rightContentControls}
         variants={{
@@ -192,7 +192,7 @@ const FeatureHighlightSection = () => {
         </motion.div>
 
         <div className="px-8">
-          <div className="grid grid-cols-2 gap-4 items-center">
+          <div className="grid md:grid-cols-2 gap-4 items-center">
             {/* Card 1: Certified Leadership */}
             <motion.div 
               className="bg-white rounded-lg p-4 w-[282px] h-[192px] shadow-sm"

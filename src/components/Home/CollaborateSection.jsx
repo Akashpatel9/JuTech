@@ -127,13 +127,13 @@ export default function CollaborateSection() {
       transition={{ duration: 0.5 }}
     >
       <div className="">
-        <div className="w-full flex">
+        <div className="w-full md:flex">
           {/* Heading */}
           <motion.div 
-            className="w-1/2"
+            className="md:w-1/2"
             variants={textVariants}
           >
-            <h2 className="text-[52px] font-[400] leading-13">
+            <h2 className="md:text-[52px] text-4xl font-[400] md:leading-13">
               We Also
               <br />
               <motion.span 
@@ -149,7 +149,7 @@ export default function CollaborateSection() {
 
           {/* Description */}
           <motion.div 
-            className="w-1/2 flex items-center justify-end"
+            className="md:w-1/2 md:flex mt-5 md:mt-0 items-center justify-end"
             variants={textVariants}
           >
             <p className="text-[#0C0E12]/60 text-[20px] font-normal w-3/4">
@@ -177,7 +177,7 @@ export default function CollaborateSection() {
             >
               <Link
                 to="#"
-                className="group block w-[320px] relative overflow-hidden aspect-square rounded-[42px] bg-[#F6F6F9] px-[33px] py-[14px] flex flex-col justify-between"
+                className="group md:w-[320px] w-full relative overflow-hidden aspect-square rounded-[42px] bg-[#F6F6F9] px-[33px] py-[14px] flex flex-col justify-between"
               >
                 <div className="flex items-center justify-between">
                   <div>

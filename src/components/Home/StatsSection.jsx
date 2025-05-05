@@ -25,14 +25,14 @@ const StatsSection = () => {
   return (
     <motion.div 
       ref={ref} 
-      className="w-full mt-36 py-[49px]"
+      className="w-full md:mt-36 mt-10 py-[49px]"
       style={{ opacity }}
     >
-      <div className="grid grid-cols-4 text-start h-[93px] gap-[56px]">
+      <div className="grid grid-cols-4 text-center md:text-start md:h-[93px] md:gap-[56px] w-full">
         {stats.map((stat, index) => (
           <motion.div
             key={index}
-            className={`flex-1 h-full ${index === stats.length - 1 ? "" : "border-r-[1px]"} border-[#AEAEAE]`}
+            className={`flex-1 w-full px-2 md:px-0 h-full ${index === stats.length - 1 ? "" : "border-r-[1px]"} border-[#AEAEAE] flex flex-col`}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { 
               opacity: 1, 
@@ -45,7 +45,7 @@ const StatsSection = () => {
             } : {}}
           >
             <motion.p 
-              className="text-[52px] font-[500] text-black"
+              className="md:text-[52px] text-2xl font-[500] text-black"
               initial={{ scale: 0.9 }}
               animate={inView ? { 
                 scale: [0.9, 1.1, 1],
@@ -73,7 +73,7 @@ const StatsSection = () => {
             </motion.p>
             
             <motion.p 
-              className="text-[24px] font-[400] text-[#434343] mt-[5px]"
+              className="md:text-[24px] font-[400] text-[#434343] mt-[5px]"
               initial={{ opacity: 0, x: -5 }}
               animate={inView ? { 
                 opacity: 1, 

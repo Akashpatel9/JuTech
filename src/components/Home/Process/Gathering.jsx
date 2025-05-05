@@ -1,44 +1,43 @@
-import React from 'react';
+export default function Gathering() {
+  const steps = [
+    {
+      number: "01",
+      title: "Conduct workshops and interviews",
+      position: "top-[50px] left-16 rotate-[6.82deg]",
+    },
+    {
+      number: "02",
+      title: "Create a product backlog or requirements document",
+      position: "top-[230px] right-16 rotate-[-9.9deg]",
+    },
+    {
+      number: "03",
+      title: "Define user stories with acceptance criteria",
+      position: "top-[480px] left-16 rotate-[6.82deg]",
+    },
+    {
+      number: "04",
+      title: "Prioritize features",
+      position: "top-[730px] right-16 rotate-[-9.9deg]  ",
+    },
+  ]
 
-const steps = [
-  "Conduct workshops and interviews.",
-  "Create a product backlog or requirements document.",
-  "Define user stories with acceptance criteria.",
-  "Prioritize features.",
-];
-
-const Gathering = () => {
   return (
-    <div className="md:w-2/3 bg-gray-50 rounded-xl p-8 relative overflow-hidden">
-      <svg className="absolute w-full h-full z-0 pointer-events-none">
-        <path
-          d="M120 80 C180 120, 180 160, 120 200
-             M120 200 C180 240, 180 280, 120 320
-             M120 320 C180 360, 180 400, 120 440"
-          stroke="#ccc"
-          strokeDasharray="5,5"
-          fill="none"
-        />
-      </svg>
+    <div className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden">
+      {/* Process cards */}
+      {steps.map((step, index) => (
+        <div
+          key={index}
+          className={`absolute ${step.position} z-10 w-[336px] bg-white shadow-xl rounded-[30px] px-[40px] py-[30px]`}
+        >
+          <div className="font-normal text-[32px] text-center mb-5">{step.number}</div>
+          <div className="bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] text-white py-[25px] px-[34px] rounded-[26px] font-normal text-[24px]">{step.title}</div>
+        </div>
+      ))}
 
-      <div className="relative z-10 flex flex-col items-start space-y-20">
-        {steps.map((text, index) => (
-          <div
-            key={index}
-            className={`relative bg-white p-4 rounded-xl shadow-md w-64 transform ${
-              index % 2 === 0 ? 'translate-x-0 -rotate-3' : 'translate-x-10 rotate-3'
-            }`}
-            style={{ top: index * 60 }}
-          >
-            <div className="text-sm font-bold mb-1">0{index + 1}</div>
-            <div className="bg-gradient-to-r from-indigo-400 to-purple-500 text-white text-sm p-2 rounded">
-              {text}
-            </div>
-          </div>
-        ))}
+      <div className=" absolute -bottom-10 right-0 left-0">
+        <img src="\gradients\gradient2.svg" className="w-full" alt="" />
       </div>
     </div>
-  );
-};
-
-export default Gathering;
+  )
+}

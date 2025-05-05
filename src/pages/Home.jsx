@@ -13,10 +13,9 @@ import ProcessTimeline from '../components/Home/ProcessTimeline'
 const Home = () => {
   return (
     <>
-
-      <div className='px-[80px]'>
+      <div className='w-full px-5 md:px-[80px]'>
         <NavBar />
-        <div>
+        <div className='w-full'>
           <HeroSection />
           <StatsSection />
           <FeatureHighlightSection />

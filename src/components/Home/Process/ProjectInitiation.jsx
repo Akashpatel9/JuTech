@@ -2,7 +2,7 @@ import React from 'react'
 
 const ProjectInitiation = ({data}) => {
     return (
-        <div className="md:w-2/3 bg-gray-50 rounded-xl p-8 relative overflow-hidden">
+        <div className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden px-[85px] py-[188px]">
             {/* Gradient background overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-indigo-50/30 via-purple-50/30 to-pink-50/30" />
 

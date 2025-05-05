@@ -11,6 +11,11 @@ import {
 } from "lucide-react"
 import ProjectInitiation from "./Process/ProjectInitiation"
 import Gathering from "./Process/Gathering"
+import Planning from "./Process/Planning"
+import WorkflowDiagram from "./Process/WorkflowDiagram"
+import Testing from "./Process/Development"
+import Development from "./Process/Development"
+import Deployment from "./Process/Deployment"
 
 const ProcessTimeline = () => {
   const [activeStep, setActiveStep] = useState(1)
@@ -142,14 +147,14 @@ const ProcessTimeline = () => {
   return (
     <div className="w-full mx-auto p-8 bg-white font-sans">
       <h2 className="text-center -mb-3">
-        <span className="bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent text-[52px] font-normal">
+        <span className="bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent md:text-[52px] text-4xl font-normal">
           Our Process
         </span>
       </h2>
-      <h3 className="text-center text-[52px] font-normal mb-12 text-black">
+      <h3 className="text-center md:text-[52px] text-4xl mt-6 md:mt-0 font-normal mb-12 text-black">
         Our Proven Path to Project Success
       </h3>
-      <div className="flex flex-row gap-8">
+      <div className="flex flex-col md:flex-row gap-8">
         {/* Left sidebar with steps */}
         <div className="md:w-1/3 relative">
           <div className="absolute left-[20%] -translate-[1.6px] top-0 bottom-0 w-[2px] bg-[#ECEEF3]"></div>
@@ -190,8 +195,24 @@ const ProcessTimeline = () => {
         {activeStep === 1 && (
           <ProjectInitiation data={steps.find((s) => s.id === activeStep)?.content || []} />
         )}
-
-        <Gathering/>
+        {activeStep === 2 && (
+          <Gathering />
+        )}
+        {activeStep === 3 && (
+          <Planning />
+        )}
+        {activeStep === 4 && (
+          <WorkflowDiagram />
+        )}
+        {activeStep === 5 && (
+          <Development />
+        )}
+        {activeStep === 6 && (
+          <Testing />
+        )}
+        {activeStep === 7 && (
+          <Deployment />
+        )}
       </div>
     </div>
   )

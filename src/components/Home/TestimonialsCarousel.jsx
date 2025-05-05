@@ -152,18 +152,18 @@ const TestimonialsCarousel = () => {
   };
 
   return (
-    <section className="py-20 bg-white text-center relative ">
+    <section className="md:py-20 bg-white text-center relative ">
       <motion.div
         initial="hidden"
         animate="visible"
         variants={titleVariants}
       >
         <h2 className="leading-10">
-          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 font-normal text-5xl bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 font-normal md:text-5xl text-3xl bg-clip-text text-transparent">
             What Our Customers Say:
-          </span>{" "}
+          </span>
           <br />
-          <span className="text-black font-normal text-5xl">Real Stories of Success</span>
+          <span className="text-black font-normal md:text-5xl text-3xl">Real Stories of Success</span>
         </h2>
       </motion.div>
 
@@ -176,7 +176,7 @@ const TestimonialsCarousel = () => {
         {/* Left Arrow */}
         <motion.button
           onClick={prev}
-          className="absolute w-14 -ml-9 aspect-square left-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-lg p-2 z-10 flex items-center justify-center hover:bg-gray-50"
+          className="absolute w-14 md:-ml-9 -ml-4 aspect-square left-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-lg p-2 z-10 flex items-center justify-center hover:bg-gray-50"
           whileHover={{ scale: 1.2, rotate: -10 }}
           whileTap={{ scale: 0.9 }}
           initial={{ x: -50, opacity: 0 }}
@@ -186,7 +186,7 @@ const TestimonialsCarousel = () => {
           <ChevronLeft size={24} />
         </motion.button>
 
-        <div className="grid grid-cols-2 gap-6 w-full">
+        <div className="grid md:grid-cols-2 gap-6 w-full">
           <AnimatePresence mode="popLayout" initial={false} custom={direction}>
             {[activeIndex, (activeIndex + 1) % testimonials.length].map((index, i) => {
               const testimonial = testimonials[index];
@@ -276,7 +276,7 @@ const TestimonialsCarousel = () => {
         {/* Right Arrow */}
         <motion.button
           onClick={next}
-          className="absolute w-14 -mr-9 aspect-square right-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-lg p-2 z-10 flex items-center justify-center hover:bg-gray-50"
+          className="absolute w-14 md:-mr-9 -mr-4 aspect-square right-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-lg p-2 z-10 flex items-center justify-center hover:bg-gray-50"
           whileHover={{ scale: 1.2, rotate: 10 }}
           whileTap={{ scale: 0.9 }}
           initial={{ x: 50, opacity: 0 }}

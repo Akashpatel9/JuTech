@@ -6,11 +6,11 @@ const HeroSection = () => {
     const { scrollY } = useScroll();
     
     return (
-        <div className='h-[calc(100vh - 20px)] w-full'>
+        <div className='md:h-[calc(100vh - 20px)] h-fit w-full relative'>
             <motion.img
                 src={`/svgs/Hero.svg`}
                 alt="Logo"
-                className='absolute right-0 -top-50 left-30 -z-20'
+                className='absolute hidden md:block right-0 md:-top-50 top-0 md:left-30 left-0 -z-20'
                 initial={{ top: -200, left: 120, opacity: 0 }}
                 animate={{
                     top: [-200, -100, -200],
@@ -20,7 +20,7 @@ const HeroSection = () => {
                 transition={{
                     duration: 10,
                     repeat: Infinity,
-                    ease: [0.43, 0.13, 0.23, 0.96], // Improved easing for more natural movement
+                    ease: [0.43, 0.13, 0.23, 0.96], 
                     opacity: { duration: 1 }
                 }}
             />
@@ -28,7 +28,7 @@ const HeroSection = () => {
             <motion.img 
                 src={`/svgs/GradientLine.svg`} 
                 alt="Logo" 
-                className='w-full object-cover absolute top-40 right-0 -z-10'
+                className='w-full hidden md:block object-cover absolute md:top-40 bottom-0 right-0 -z-10'
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -37,9 +37,9 @@ const HeroSection = () => {
                 }}
             />
             
-            <div className='w-[1013px] min-h-[585px] mt-20'>
+            <div className='md:w-[1013px] md:h-[585px] h-fit md:mt-20 mt-10'>
                 <motion.h1
-                    className='font-medium text-[140px] text-[#18191C] leading-[140px]'
+                    className='font-medium text-5xl md:text-[140px] text-[#18191C] md:leading-[140px] leading-16'
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ 
@@ -71,7 +71,7 @@ const HeroSection = () => {
                 
                 <div className='flex items-center justify-between'>
                     <div />
-                    <div className='w-[40%] mt-14'>
+                    <div className='md:w-[40%] mt-10 md:mt-20'>
                         <motion.p
                             className='font-normal text-[18px] leading-[28px]'
                             initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ const HeroSection = () => {
                         </motion.p>
                         
                         <motion.button
-                            className='py-[14px] cursor-pointer px-[23px] bg-white border-[1.47px] border-[#0C0E121F] rounded-[11px] font-normal text-[23px] mt-[40px]'
+                            className='py-[14px] cursor-pointer px-[23px] bg-white border-[1.47px] border-[#0C0E121F] rounded-[11px] font-normal text-[23px] md:mt-[40px] mt-8'
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             whileHover={{ 

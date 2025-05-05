@@ -82,19 +82,19 @@ export default function ServicesSection() {
             transition={{ duration: 0.8 }}
         >
             <motion.div
-                className="flex items-center justify-between"
+                className="md:flex items-center justify-between"
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
                 <motion.div
-                    className="w-1/2 leading-16"
+                    className="md:w-1/2 leading-16"
                     initial={{ x: -30, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.7, delay: 0.2 }}
                 >
                     <motion.h1
-                        className="font-[400] text-[52px] bg-clip-text text-transparent bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381]"
+                        className="font-[400] md:text-[52px] text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381]"
                         style={{ backgroundSize: "200% 100%" }}
                         animate={{
                             backgroundPosition: ["0% center", "100% center", "0% center"]
@@ -108,7 +108,7 @@ export default function ServicesSection() {
                         Services We Offer
                     </motion.h1>
                     <motion.h1
-                        className="font-[400] text-[52px]"
+                        className="font-[400] md:text-[52px] text-xl mt-2 md:mt-0"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
@@ -116,14 +116,15 @@ export default function ServicesSection() {
                         Expert Skill Sets & Solutions
                     </motion.h1>
                 </motion.div>
+
                 <motion.div
-                    className="w-1/2 flex items-center justify-end"
+                    className="md:w-1/2 flex items-center justify-end"
                     initial={{ x: 30, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.7, delay: 0.3 }}
                 >
                     <motion.p
-                        className="w-3/4 leading-7 font-[400] text-[20px] text-[#0C0E12]"
+                        className="md:w-3/4 mt-4 md:mt-0 leading-7 font-[400] md:text-[20px] text-md text-[#0C0E12]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
@@ -134,7 +135,7 @@ export default function ServicesSection() {
             </motion.div>
 
             <motion.div
-                className="grid grid-cols-3 w-full mt-[60px]"
+                className="grid md:grid-cols-3 gap-10 w-full mt-[60px]"
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.4 }}
@@ -203,7 +204,7 @@ export default function ServicesSection() {
 
                 {/* Right Panel with AnimatePresence for smooth transitions */}
                 <motion.div
-                    className="border col-span-2 border-[#EAEAEA] rounded-[25px] w-full px-[40px] py-[50px] space-y-[40px] overflow-hidden"
+                    className="border md:col-span-2 border-[#EAEAEA] rounded-[25px] w-full px-[40px] py-[50px] space-y-[40px] overflow-hidden"
                     initial={{ x: 30, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.7 }}

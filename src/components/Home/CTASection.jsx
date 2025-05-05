@@ -22,8 +22,8 @@ const CTASection = () => {
     return (
         <section className="relative bg-[#F6F6F9] rounded-[30px] pt-[105px] py-20 pl-[84px] mt-20 overflow-hidden">
             {/* Text Section */}
-            <div className="w-[839px]">
-                <h2 className="text-[72px] font-normal leading-20">
+            <div className="m:w-[839px]">
+                <h2 className="md:text-[72px] text-2xl font-normal md:leading-20">
                     <span className="bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent">Ready to start</span> your <br />
                     Project journey with us?
                 </h2>
@@ -104,7 +104,7 @@ const CTASection = () => {
 
             {/* Tech logos */}
             <motion.div 
-                className="absolute -top-40 bottom-0 right-10 flex flex-col gap-5 flex-wrap h-[596px] -rotate-45 items-center justify-center"
+                className="absolute -top-40 bottom-0 right-10 flex flex-col gap-5 flex-wrap md:h-[596px] -rotate-45 items-center justify-center"
                 animate={{
                     x: hovering ? 40 : 0,
                     opacity: hovering ? 0.4 : 1
@@ -114,7 +114,7 @@ const CTASection = () => {
                 {techLogos.map((logo, idx) => (
                     <motion.div 
                         key={idx} 
-                        className="w-[100px] aspect-square"
+                        className="md:w-[100px] w-10 aspect-square"
                         initial={{ opacity: 0, scale: 0 }}
                         animate={{ 
                             opacity: 1, 

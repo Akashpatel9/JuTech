@@ -37,9 +37,9 @@ export const NavBar = () => {
                 <img src={`/svgs/logo.svg`} alt="Logo" className='h-[35px] w-[35px]' />
                 <h1 className='text-xl Plus-Jakarta-Sans font-[700] text-[28.77px]'>JuTech</h1>
             </div>
-            <div className='flex items-center gap-[32px]'>
+            <div className='hidden md:flex items-center gap-[32px]'>
                 {links.map((item, idx) => (
-                    <Link key={idx} to={item.link} className='font-[400]'>
+                    <Link key={idx} to={item.link} className='font-[400] whitespace-nowrap'>
                         {item.title}
                     </Link>
                 ))}

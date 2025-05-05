@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 export default function Footer() {
     return (
         <motion.footer 
-            className="w-full py-12 relative overflow-hidden mt-10"
+            className="w-full py-12 relative overflow-hidden md:mt-10"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -13,7 +13,7 @@ export default function Footer() {
         >
             {/* Background decorative elements */}
             <motion.h1 
-                className="absolute -right-12 -top-10 font-[700] text-[450px] text-[#E3E0E0]/30 -z-10"
+                className="absolute -right-12 md:-top-10 -bottom-20 font-[700] text-[200px] md:text-[450px] text-[#E3E0E0]/30 -z-10"
                 initial={{ opacity: 0, x: 100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -22,8 +22,8 @@ export default function Footer() {
                 JuTech
             </motion.h1>
 
-            <div className="px-[90px] relative mt-10">
-                <div className="flex items-start justify-between">
+            <div className="md:px-[90px] px-4 relative md:mt-10">
+                <div className="flex flex-col md:flex-row items-start justify-between">
                     {/* Left side - Logo, tagline and social */}
                     <motion.div 
                         className="space-y-6"
@@ -71,7 +71,7 @@ export default function Footer() {
 
                     {/* Right side - Contact info */}
                     <motion.div 
-                        className="flex items-start gap-10"
+                        className="flex mt-10 items-start md:gap-10"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
