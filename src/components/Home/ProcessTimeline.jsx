@@ -13,9 +13,10 @@ import ProjectInitiation from "./Process/ProjectInitiation"
 import Gathering from "./Process/Gathering"
 import Planning from "./Process/Planning"
 import WorkflowDiagram from "./Process/WorkflowDiagram"
-import Testing from "./Process/Development"
+import Testing from "./Process/Testing"
 import Development from "./Process/Development"
 import Deployment from "./Process/Deployment"
+import Improvement from "./Process/Improvemets"
 
 const ProcessTimeline = () => {
   const [activeStep, setActiveStep] = useState(1)
@@ -212,6 +213,9 @@ const ProcessTimeline = () => {
         )}
         {activeStep === 7 && (
           <Deployment />
+        )}
+        {activeStep === 9 && (
+          <Improvement />
         )}
       </div>
     </div>

@@ -6,7 +6,7 @@ const HeroSection = () => {
     const { scrollY } = useScroll();
     
     return (
-        <div className='md:h-[calc(100vh - 20px)] h-fit w-full relative'>
+        <div className='md:h-[calc(100vh - 20px)] h-fit relative md:static'>
             <motion.img
                 src={`/svgs/Hero.svg`}
                 alt="Logo"

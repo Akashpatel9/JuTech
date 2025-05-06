@@ -1,39 +1,158 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
-const ProjectInitiation = ({data}) => {
+const ProjectInitiation = ({ data }) => {
+    // Track scroll progress for the vertical line animation
+    const [scrollProgress, setScrollProgress] = useState(0);
+    
+    // Set up intersection observer for each timeline item
+    const controls = useAnimation();
+    const [containerRef, inView] = useInView({
+        triggerOnce: false,
+        threshold: 0.2,
+    });
+
+    // Update scroll progress when scrolling
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            // Calculate scroll progress as a percentage
+            const calculated = scrollPosition / (documentHeight - windowHeight);
+            setScrollProgress(Math.min(calculated, 1));
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Start animations when container comes into view
+    useEffect(() => {
+        if (inView) {
+            controls.start('visible');
+        }
+    }, [controls, inView]);
+
+    // Animation variants
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.3,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { 
+            opacity: 0,
+            x: -20 
+        },
+        visible: { 
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.5,
+                ease: "easeOut",
+            }
+        },
+    };
+
     return (
-        <div className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden px-[85px] py-[188px]">
+        <div 
+            ref={containerRef}
+            className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden px-[85px] py-[188px]"
+        >
             {/* Gradient background overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-indigo-50/30 via-purple-50/30 to-pink-50/30" />
-
+            
             {/* Vertical timeline */}
             <div className="relative z-10">
-                <div className="absolute left-6 top-0 bottom-0 w-px border-dashed border-l border-blue-200" />
-
-                {/* Content for active step */}
-                <div className="space-y-12">
+                {/* Base timeline line */}
+                <div className="absolute left-6 top-10 bottom-10 w-[3px] bg-[#DEDEDE]" />
+                
+                {/* Animated timeline progress line */}
+                <motion.div 
+                    className="absolute left-6 top-10 w-[3px] bg-gradient-to-b from-[#C0AEFE] via-[#6D39F3] to-[#3956EB]"
+                    initial={{ height: "0%" }}
+                    animate={{ 
+                        height: inView ? `${Math.max(10, scrollProgress * 100)}%` : "0%"
+                    }}
+                    transition={{ duration: 0.2 }}
+                />
+                
+                {/* Content items */}
+                <motion.div 
+                    className="space-y-12"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={controls}
+                >
                     {data.map((item, index) => (
-                            <div key={index} className="flex items-start relative">
-                                {/* Timeline circle */}
-                                <div className="absolute left-6 transform -translate-x-1/2">
-                                    <div
-                                        className={`w-12 h-12 rounded-full flex items-center justify-center ${index === 0 ? "bg-white border-4 border-blue-100" : "bg-white border border-gray-200"
-                                            }`}
-                                    >
-                                        <div className={`w-3 h-3 rounded-full ${index === 0 ? "bg-purple-500" : "bg-gray-200"}`}></div>
+                        <motion.div 
+                            key={index} 
+                            className="flex items-center relative"
+                            variants={itemVariants}
+                        >
+                            {/* Timeline circle */}
+                            <motion.div 
+                                className="absolute left-6 transform -translate-x-1/2"
+                                initial={{ scale: 0 }}
+                                animate={{ scale: inView ? 1 : 0 }}
+                                transition={{ 
+                                    delay: index * 0.3,
+                                    duration: 0.5,
+                                    type: "spring",
+                                    stiffness: 260,
+                                    damping: 20
+                                }}
+                            >
+                                <div className={`rounded-full p-[3px] ${
+                                    index <= Math.floor(scrollProgress * data.length) 
+                                        ? "bg-gradient-to-tr from-[#4885EF] via-[#C560CF] to-[#DA5381]" 
+                                        : "bg-gray-200"
+                                }`}>
+                                    <div className="w-[81px] aspect-square rounded-full bg-white flex items-center justify-center">
+                                        <div className={`w-[32px] aspect-square rounded-full ${
+                                            index <= Math.floor(scrollProgress * data.length) 
+                                                ? "bg-purple-500" 
+                                                : "bg-gray-200"
+                                        }`}></div>
                                     </div>
                                 </div>
-
-                                {/* Content card */}
-                                <div className="ml-16 bg-white rounded-lg shadow-sm p-5 w-full">
-                                    <span className="text-gray-800">{item}</span>
-                                </div>
-                            </div>
-                        ))}
-                </div>
+                            </motion.div>
+                            
+                            {/* Content card */}
+                            <motion.div 
+                                className="ml-28 bg-white rounded-[30px] shadow-2xl py-[37px] px-[35px] w-full"
+                                initial={{ opacity: 0, x: 50 }}
+                                animate={{ 
+                                    opacity: inView ? 1 : 0,
+                                    x: inView ? 0 : 50
+                                }}
+                                transition={{ 
+                                    delay: index * 0.3 + 0.2,
+                                    duration: 0.5,
+                                    ease: "easeOut"
+                                }}
+                            >
+                                <span className={`text-[24px] ${
+                                    index <= Math.floor(scrollProgress * data.length) 
+                                        ? "bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent" 
+                                        : "text-black"
+                                } font-normal`}>
+                                    {item}
+                                </span>
+                            </motion.div>
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ProjectInitiation
+export default ProjectInitiation;

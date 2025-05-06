@@ -1,49 +1,86 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export default function WorkflowDiagram() {
+  const [visibleSteps, setVisibleSteps] = useState(0);
+  
   const workflowSteps = [
     {
       id: "01",
-      text: "Create wireframes, UI mockups, and user flows."
+      text: "Conduct workshops and interviews."
     },
     {
       id: "02",
-      text: "Conduct user testing."
+      text: "Design system architecture and tech stack."
     },
     {
       id: "03",
-      text: "Iterate design based on feedback."
+      text: "Define user stories with acceptance criteria."
     },
     {
       id: "04",
-      text: "UI/UX design for development."
+      text: "Prioritize features."
     }
   ];
 
+  useEffect(() => {
+    if (visibleSteps < workflowSteps.length) {
+      const timer = setTimeout(() => {
+        setVisibleSteps(prev => prev + 1);
+      }, 500); // Show a new step every 0.5 seconds
+      
+      return () => clearTimeout(timer);
+    }
+  }, [visibleSteps, workflowSteps.length]);
+
   return (
     <div className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden">
-      <div className="z-10 flex flex-col items-center w-[425px] justify-between h-full pt-16 gap-10 mx-auto">
+      <div className="z-10 flex flex-col items-center w-[425px] justify-between h-full pt-16 gap-10 mx-auto pb-16">
         {workflowSteps.map((step, index) => (
-          <div key={step.id} className="z-10 flex flex-col items-center w-full h-[259px]">
+          <motion.div 
+            key={step.id} 
+            className="z-10 flex flex-col items-center w-full h-[259px]"
+            initial={{ opacity: 0, y: 50 }}
+            animate={index < visibleSteps ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            transition={{ duration: 0.5 }}
+          >
             {/* Card with gradient background */}
             <div className="relative h-[198px] rounded-[37px] bg-gradient-to-br from-indigo-400 to-purple-600 text-white text-center shadow-lg w-full">
               {/* Circle with step number */}
-              <div className="absolute -top-14 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-[104px] aspect-square rounded-full bg-gradient-to-b from-[#C0AEFE] via-[#6D39F3] to-[#3956EB ] text-white font-medium border-5 border-[#F4F4F7]">
-                {step.id}
+              <div className="absolute -top-14 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-[104px] aspect-square rounded-full bg-gradient-to-b from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] text-white font-medium border-5 border-[#F4F4F7]">
+                <span className="text-2xl">{step.id}</span>
               </div>
-              <div className="font-normal text-[32px] mt-16">
+              <div className="font-normal text-[32px] mt-16 px-4">
                 {step.text}
               </div>
             </div>
             {/* Connector line (if not the last item) */}
             {index < workflowSteps.length - 1 && (
-              <div className="w-1 h-12 mt-1 bg-purple-400"></div>
+              <motion.div 
+                className="w-1 h-12 mt-1 bg-purple-400"
+                initial={{ scaleY: 0 }}
+                animate={index < visibleSteps - 1 ? { scaleY: 1 } : { scaleY: 0 }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+              ></motion.div>
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
-      <div className=" absolute -bottom-10 right-0 left-0">
-        <img src="\gradients\gradient2.svg" className="w-full" alt="" />
+      
+      {/* Reset button */}
+      {visibleSteps === workflowSteps.length && (
+        <div className="flex justify-center pb-6">
+          <button 
+            onClick={() => setVisibleSteps(0)} 
+            className="bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors"
+          >
+            Restart Animation
+          </button>
+        </div>
+      )}
+      
+      <div className="absolute -bottom-10 right-0 left-0">
+        <img src="/gradients/gradient2.svg" className="w-full" alt="" />
       </div>
     </div>
   );

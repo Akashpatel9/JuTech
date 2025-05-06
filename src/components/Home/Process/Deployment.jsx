@@ -18,7 +18,7 @@ export default function Deployment() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
+            transition={{ duration: 0.4, delay: index * 0.4 }}
           >
             <div className="w-[77px] aspect-square rounded-full bg-gradient-to-br from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] flex items-center justify-center text-white font-normal text-[28px] shadow z-10 shrink-0">
               {item.id}

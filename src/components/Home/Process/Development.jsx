@@ -1,26 +1,91 @@
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 const data = [
-    { id: "01", title: "Develop in sprints or phases." },
-    { id: "02", title: "Design system architecture and tech stack." },
-    { id: "03", title: "Define user stories with acceptance criteria." },
-    { id: "04", title: "Prioritize features." },
+  { id: "01", title: "Develop in sprints or phases." },
+  { id: "02", title: "Design system architecture and tech stack." },
+  { id: "03", title: "Define user stories with acceptance criteria." },
+  { id: "04", title: "Prioritize features." },
 ];
 
 export default function Development() {
-    return (
-        <div className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden">
-            <div className="relative top-1/2 left-1/2">
-                {data.map((item) => (
-                    <div
-                        className=" absolute w-[546px] h-[343px] -translate-y-1/2 -translate-x-1/2 bg-gradient-to-br from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] text-white px-[37px] py-[43px] rounded-[37px] z-10 flex flex-col justify-between"
-                    >
-                        <h1 className="text-[40px] font-normal">{item.id}</h1>
-                        <p className="text-[40px] font-normal">{item.title}</p>
-                    </div>
-                ))}
-            </div>
-            <div className=" absolute -bottom-10 right-0 left-0">
-        <img src="\gradients\gradient2.svg" className="w-full" alt="" />
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isPaused && activeIndex < data.length - 1) {
+        setActiveIndex((prev) => prev + 1);
+      }
+    }, 800);
+  
+    return () => clearInterval(interval);
+  }, [isPaused, activeIndex]);
+  
+
+  const getCardStyles = (index) => {
+    // Calculate position in stack relative to active card
+    const diff = (index - activeIndex + data.length) % data.length;
+    
+    // Position 0 is front, others are stacked behind with increasing z-index
+    return {
+      zIndex: data.length - diff,
+      scale: 1 - diff * 0.05, // Each card slightly smaller
+      y: diff * 10, // Each card slightly lower
+      opacity: diff === 0 ? 1 : 0.8 - diff * 0.15, // Front card full opacity, others faded
+      rotateZ: diff === 0 ? 0 : diff * -1, // Slight rotation for stack effect
+    };
+  };
+
+  return (
+    <div 
+      className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div className="relative top-1/2 left-1/2">
+        {data.map((item, index) => (
+          <AnimatePresence key={item.id} mode="popLayout">
+            <motion.div
+              className="absolute w-[546px] h-[343px] -translate-y-1/2 -translate-x-1/2 bg-gradient-to-br from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] text-white px-[37px] py-[43px] rounded-[37px] flex flex-col justify-between"
+              initial={{ 
+                scale: 0.9, 
+                y: 50, 
+                opacity: 0,
+                zIndex: -1 
+              }}
+              animate={getCardStyles(index)}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+                duration: 0.5,
+              }}
+            >
+              <h1 className="text-[40px] font-normal">{item.id}</h1>
+              <p className="text-[40px] font-normal">{item.title}</p>
+            </motion.div>
+          </AnimatePresence>
+        ))}
       </div>
-        </div>
-    );
+
+      {/* Navigation dots */}
+      {/* <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+        {data.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setActiveIndex(idx)}
+            className={`w-3 h-3 rounded-full ${
+              idx === activeIndex ? "bg-white" : "bg-gray-400 bg-opacity-50"
+            } transition-colors duration-200`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
+      </div> */}
+
+      <div className="absolute -bottom-10 right-0 left-0">
+        <img src="/gradients/gradient2.svg" className="w-full" alt="" />
+      </div>
+    </div>
+  );
 }
