@@ -27,7 +27,7 @@ const ProcessTimeline = () => {
       id: 1,
       number: "01",
       title: "Project Initiation",
-      icon: <FileText className="w-5 h-5" />,
+      icon: 'svgs/processtimeline/1.svg',
       goal: "Align stakeholders on project objectives.",
       content: [
         "Define project scope and objectives.",
@@ -40,7 +40,7 @@ const ProcessTimeline = () => {
       id: 2,
       number: "02",
       title: "Requirements Gathering and Analysis",
-      icon: <FileText className="w-5 h-5" />,
+      icon: 'svgs/processtimeline/2.svg',
       goal: "Define product requirements clearly.",
       content: [
         "Conduct workshops and interviews.",
@@ -53,7 +53,7 @@ const ProcessTimeline = () => {
       id: 3,
       number: "03",
       title: "Planning and Design",
-      icon: <FolderKanban className="w-5 h-5" />,
+      icon: 'svgs/processtimeline/3.svg',
       goal: "Plan and design system architecture.",
       content: [
         "Develop project plan and timeline.",
@@ -65,7 +65,7 @@ const ProcessTimeline = () => {
       id: 4,
       number: "04",
       title: "UI/UX Design",
-      icon: <Paintbrush className="w-5 h-5" />,
+      icon: 'svgs/processtimeline/4.svg',
       goal: "Design an intuitive user interface.",
       content: [
         "Create wireframes, UI mockups, and user flows.",
@@ -78,7 +78,7 @@ const ProcessTimeline = () => {
       id: 5,
       number: "05",
       title: "Development and Coding",
-      icon: <Code className="w-5 h-5" />,
+      icon: 'svgs/processtimeline/5.svg',
       goal: "Build the product.",
       content: [
         "Develop in sprints or phases.",
@@ -91,7 +91,7 @@ const ProcessTimeline = () => {
       id: 6,
       number: "06",
       title: "Quality Assurance and Testing",
-      icon: <Search className="w-5 h-5" />,
+      icon: 'svgs/processtimeline/6.svg',
       goal: "Ensure product quality.",
       content: [
         "Create and execute test cases.",
@@ -104,7 +104,7 @@ const ProcessTimeline = () => {
       id: 7,
       number: "07",
       title: "Deployment and Go Live",
-      icon: <Rocket className="w-5 h-5" />,
+      icon: 'svgs/processtimeline/7.svg',
       goal: "Deploy the product successfully.",
       content: [
         "Execute deployment (blue/green or rolling).",
@@ -117,7 +117,7 @@ const ProcessTimeline = () => {
       id: 8,
       number: "08",
       title: "Product Monitoring and Support",
-      icon: <Headphones className="w-5 h-5" />,
+      icon: 'svgs/processtimeline/8.svg',
       goal: "Ensure continuous product performance.",
       content: [
         "Develop project plan and timeline.",
@@ -130,7 +130,7 @@ const ProcessTimeline = () => {
       id: 9,
       number: "09",
       title: "Continuous Improvement",
-      icon: <RefreshCw className="w-5 h-5" />,
+      icon: 'svgs/processtimeline/9.svg',
       goal: "Enhance the product based on feedback.",
       content: [
         "Execute deployment (blue/green or rolling).",
@@ -182,7 +182,9 @@ const ProcessTimeline = () => {
                   </h1>
                 </div>
                 <div className="col-span-4 px-4">
-                  <div>{step.icon}</div>
+                  <div>
+                    <img src={step.icon} alt={step.title} />
+                  </div>
                   <h4
                     className={`mt-2 text-[20px] font-medium ${
                       step.id === activeStep
