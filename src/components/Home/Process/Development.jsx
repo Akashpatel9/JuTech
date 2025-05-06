@@ -14,13 +14,13 @@ export default function Development() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!isPaused && activeIndex < data.length - 1) {
-        setActiveIndex((prev) => prev + 1);
+      if (!isPaused) {
+        setActiveIndex((prev) => (prev + 1) % data.length);
       }
-    }, 1000);
+    }, 2000);
   
     return () => clearInterval(interval);
-  }, [isPaused, activeIndex]);
+  }, [isPaused]);
   
 
   const getCardStyles = (index) => {
@@ -57,9 +57,9 @@ export default function Development() {
               animate={getCardStyles(index)}
               transition={{
                 type: "spring",
-                stiffness: 300,
-                damping: 30,
-                duration: 0.5,
+                stiffness: 100,
+                damping: 20,
+                duration: 1.2,
               }}
             >
               <h1 className="text-[40px] font-normal">{item.id}</h1>

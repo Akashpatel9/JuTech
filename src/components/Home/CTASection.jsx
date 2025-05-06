@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const techLogos = [
     "/images/JS.png",
     "/images/AWS.png",
-    "/images/ANGULAR.png",
+    "/images/AZORE.png",
     "/images/NODE.png",
     "/images/CSS.png",
     "/images/GO.png",

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 import {
   FileText,
   FolderKanban,
@@ -7,19 +7,20 @@ import {
   Search,
   Rocket,
   Headphones,
-  RefreshCw
-} from "lucide-react"
-import ProjectInitiation from "./Process/ProjectInitiation"
-import Gathering from "./Process/Gathering"
-import Planning from "./Process/Planning"
-import WorkflowDiagram from "./Process/WorkflowDiagram"
-import Testing from "./Process/Testing"
-import Development from "./Process/Development"
-import Deployment from "./Process/Deployment"
-import Improvement from "./Process/Improvemets"
+  RefreshCw,
+} from "lucide-react";
+import ProjectInitiation from "./Process/ProjectInitiation";
+import Gathering from "./Process/Gathering";
+import Planning from "./Process/Planning";
+import WorkflowDiagram from "./Process/WorkflowDiagram";
+import Testing from "./Process/Testing";
+import Development from "./Process/Development";
+import Deployment from "./Process/Deployment";
+import Improvement from "./Process/Improvemets";
+import ProductMonitoring from "./Process/ProductMonitoring";
 
 const ProcessTimeline = () => {
-  const [activeStep, setActiveStep] = useState(1)
+  const [activeStep, setActiveStep] = useState(1);
 
   const steps = [
     {
@@ -139,11 +140,11 @@ const ProcessTimeline = () => {
         "Monitor post-deployment.",
       ],
     },
-  ]
+  ];
 
   const handleStepClick = (stepId) => {
-    setActiveStep(stepId)
-  }
+    setActiveStep(stepId);
+  };
 
   return (
     <div className="w-full mx-auto p-8 bg-white font-sans">
@@ -167,16 +168,27 @@ const ProcessTimeline = () => {
                 className="relative grid grid-cols-5 cursor-pointer"
                 onClick={() => handleStepClick(step.id)}
               >
-                <div className={`h-full col-span-1 flex items-center ${step.id === activeStep && "border-r-[2px] border-[#CC41E4]"}`}>
-                  <h1 className={`font-medium text-[36px] px-1 mb-4 ${step.id !== activeStep && "text-[#E6E6E6]"}`}>0{idx + 1}</h1>
+                <div
+                  className={`h-full col-span-1 flex items-center ${
+                    step.id === activeStep && "border-r-[2px] border-[#CC41E4]"
+                  }`}
+                >
+                  <h1
+                    className={`font-medium text-[36px] px-1 mb-4 ${
+                      step.id !== activeStep && "text-[#E6E6E6]"
+                    }`}
+                  >
+                    0{idx + 1}
+                  </h1>
                 </div>
                 <div className="col-span-4 px-4">
                   <div>{step.icon}</div>
                   <h4
-                    className={`mt-2 text-[20px] font-medium ${step.id === activeStep
-                      ? "bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] text-transparent bg-clip-text"
-                      : "text-[#18191C]"
-                      }`}
+                    className={`mt-2 text-[20px] font-medium ${
+                      step.id === activeStep
+                        ? "bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] text-transparent bg-clip-text"
+                        : "text-[#18191C]"
+                    }`}
                   >
                     {step.title}
                   </h4>
@@ -194,32 +206,21 @@ const ProcessTimeline = () => {
 
         {/* Right content area */}
         {activeStep === 1 && (
-          <ProjectInitiation data={steps.find((s) => s.id === activeStep)?.content || []} />
+          <ProjectInitiation
+            data={steps.find((s) => s.id === activeStep)?.content || []}
+          />
         )}
-        {activeStep === 2 && (
-          <Gathering />
-        )}
-        {activeStep === 3 && (
-          <Planning />
-        )}
-        {activeStep === 4 && (
-          <WorkflowDiagram />
-        )}
-        {activeStep === 5 && (
-          <Development />
-        )}
-        {activeStep === 6 && (
-          <Testing />
-        )}
-        {activeStep === 7 && (
-          <Deployment />
-        )}
-        {activeStep === 9 && (
-          <Improvement />
-        )}
+        {activeStep === 2 && <Gathering />}
+        {activeStep === 3 && <Planning />}
+        {activeStep === 4 && <WorkflowDiagram />}
+        {activeStep === 5 && <Development />}
+        {activeStep === 6 && <Testing />}
+        {activeStep === 7 && <Deployment />}
+        {activeStep === 8 && <ProductMonitoring />}
+        {activeStep === 9 && <Improvement />}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProcessTimeline
+export default ProcessTimeline;

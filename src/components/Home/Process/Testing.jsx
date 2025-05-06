@@ -31,7 +31,7 @@ const cardVariants = {
     scale: 1 - 0.05 * i,
     zIndex: data.length - i,
     boxShadow: `0px ${8 + 4 * i}px ${24 + 8 * i}px 0px rgba(0,0,0,0.15)`,
-    transition: { type: "spring", bounce: 0.3, duration: 0.7 },
+    transition: { type: "spring", bounce: 0.2, duration: 1.2 },
   }),
 };
 
@@ -39,12 +39,10 @@ export default function Testing() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    if (current < data.length - 1) {
-      const timer = setTimeout(() => {
-        setCurrent((prev) => prev + 1);
-      }, 1200); 
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => {
+      setCurrent((prev) => (prev + 1) % data.length);
+    }, 2000); 
+    return () => clearTimeout(timer);
   }, [current]);
 
   return (

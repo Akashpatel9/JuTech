@@ -22,7 +22,7 @@ const ProjectInitiation = ({ data }) => {
         hidden: {},
         visible: {
             transition: {
-                staggerChildren: 0.3,
+                staggerChildren: 0.6,
             },
         },
     };
@@ -36,7 +36,7 @@ const ProjectInitiation = ({ data }) => {
             opacity: 1,
             x: 0,
             transition: {
-                duration: 0.5,
+                duration: 0.8,
                 ease: "easeOut",
             }
         },
@@ -60,7 +60,7 @@ const ProjectInitiation = ({ data }) => {
                     className="absolute left-6 top-10 w-[3px] bg-gradient-to-b from-[#C0AEFE] via-[#6D39F3] to-[#3956EB]"
                     initial={{ height: "0%" }}
                     animate={{ height: inView ? "80%" : "0%" }}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 2.8, ease: "easeInOut" }}
                 />
                 
                 {/* Content items */}
@@ -82,8 +82,8 @@ const ProjectInitiation = ({ data }) => {
                                 initial={{ scale: 0 }}
                                 animate={{ scale: inView ? 1 : 0 }}
                                 transition={{ 
-                                    delay: index * 0.3,
-                                    duration: 0.5,
+                                    delay: index * 0.6,
+                                    duration: 0.8,
                                     type: "spring",
                                     stiffness: 260,
                                     damping: 20
@@ -105,8 +105,8 @@ const ProjectInitiation = ({ data }) => {
                                     x: inView ? 0 : 50
                                 }}
                                 transition={{ 
-                                    delay: index * 0.3 + 0.2,
-                                    duration: 0.5,
+                                    delay: index * 0.6 + 0.3,
+                                    duration: 0.8,
                                     ease: "easeOut"
                                 }}
                             >
