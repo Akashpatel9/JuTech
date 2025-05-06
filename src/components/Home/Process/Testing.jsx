@@ -1,38 +1,74 @@
 "use client";
-import { useRef } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence, transform } from "framer-motion";
 
 const data = [
-  { id: "01", title: "Conduct workshops and interviews." },
-  { id: "02", title: "Design system architecture and tech stack." },
-  { id: "03", title: "Define user stories with acceptance criteria." },
-  { id: "04", title: "Prioritize features." },
+  { id: "01", title: "Create and execute test cases." },
+  { id: "02", title: "Perform manual and automated tests." },
+  { id: "03", title: "Fix bugs and validate functionality." },
+  { id: "04", title: "Perform load and security testing." },
 ];
 
+const VISIBLE_CARDS = 3; // Number of cards to show in the stack
+
+const cardVariants = {
+  initial: (i) => ({
+    opacity: 1,
+    y: 20 * i,
+    scale: 1 - 0.05 * i,
+    zIndex: data.length - i,
+    boxShadow: `0px ${8 + 4 * i}px ${24 + 8 * i}px 0px rgba(0,0,0,0.15)`
+  }),
+  exit: {
+    opacity: 0,
+    y: -400,
+    rotate: 40,
+    transition: { duration: 0.8 },
+  },
+  animate: (i) => ({
+    opacity: 1,
+    y: 20 * i,
+    scale: 1 - 0.05 * i,
+    zIndex: data.length - i,
+    boxShadow: `0px ${8 + 4 * i}px ${24 + 8 * i}px 0px rgba(0,0,0,0.15)`,
+    transition: { type: "spring", bounce: 0.3, duration: 0.7 },
+  }),
+};
+
 export default function Testing() {
-  const scrollRef = useRef(null);
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (current < data.length - 1) {
+      const timer = setTimeout(() => {
+        setCurrent((prev) => prev + 1);
+      }, 1200); 
+      return () => clearTimeout(timer);
+    }
+  }, [current]);
 
   return (
-    <div className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden">
-      {data.map((item, index) => (
-        <section
-          key={item.id}
-          className="h-screen flex items-center justify-center snap-start snap-always"
-        >
-          <motion.div
-            className="relative w-[320px] h-[220px] bg-gradient-to-br from-[#7B5FFF] to-[#3956EB] text-white rounded-[24px] px-6 py-8 shadow-2xl flex flex-col justify-between"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="text-[20px] font-medium">{item.id}</h1>
-            <p className="text-[20px] font-medium">{item.title}</p>
-
-
-          </motion.div>
-        </section>
-      ))}
+    <div className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center">
+      <div className="relative w-[546px] h-[343px]">
+        <AnimatePresence initial={false}>
+          {data.slice(current, current + VISIBLE_CARDS).map((item, idx) => (
+            <motion.div
+              key={item.id}
+              className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] text-white rounded-[24px] px-6 py-8 shadow-2xl flex flex-col justify-between"
+              custom={idx}
+              variants={cardVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              style={{ zIndex: data.length - idx }}
+              layoutId={item.id}
+            >
+              <h1 className="text-[40px] font-normal text-white">{item.id}</h1>
+              <p className="text-[40px] font-normal text-white">{item.title}</p>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

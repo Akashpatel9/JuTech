@@ -17,7 +17,7 @@ export default function Development() {
       if (!isPaused && activeIndex < data.length - 1) {
         setActiveIndex((prev) => prev + 1);
       }
-    }, 800);
+    }, 1000);
   
     return () => clearInterval(interval);
   }, [isPaused, activeIndex]);
@@ -40,8 +40,8 @@ export default function Development() {
   return (
     <div 
       className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      // onMouseEnter={() => setIsPaused(true)}
+      // onMouseLeave={() => setIsPaused(false)}
     >
       <div className="relative top-1/2 left-1/2">
         {data.map((item, index) => (
@@ -68,21 +68,6 @@ export default function Development() {
           </AnimatePresence>
         ))}
       </div>
-
-      {/* Navigation dots */}
-      {/* <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-        {data.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setActiveIndex(idx)}
-            className={`w-3 h-3 rounded-full ${
-              idx === activeIndex ? "bg-white" : "bg-gray-400 bg-opacity-50"
-            } transition-colors duration-200`}
-            aria-label={`Go to slide ${idx + 1}`}
-          />
-        ))}
-      </div> */}
-
       <div className="absolute -bottom-10 right-0 left-0">
         <img src="/gradients/gradient2.svg" className="w-full" alt="" />
       </div>

@@ -1,33 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const ProjectInitiation = ({ data }) => {
-    // Track scroll progress for the vertical line animation
-    const [scrollProgress, setScrollProgress] = useState(0);
-    
     // Set up intersection observer for each timeline item
     const controls = useAnimation();
     const [containerRef, inView] = useInView({
         triggerOnce: false,
-        threshold: 0.2,
+        threshold: 0,
     });
-
-    // Update scroll progress when scrolling
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight;
-            
-            // Calculate scroll progress as a percentage
-            const calculated = scrollPosition / (documentHeight - windowHeight);
-            setScrollProgress(Math.min(calculated, 1));
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     // Start animations when container comes into view
     useEffect(() => {
@@ -78,10 +59,8 @@ const ProjectInitiation = ({ data }) => {
                 <motion.div 
                     className="absolute left-6 top-10 w-[3px] bg-gradient-to-b from-[#C0AEFE] via-[#6D39F3] to-[#3956EB]"
                     initial={{ height: "0%" }}
-                    animate={{ 
-                        height: inView ? `${Math.max(10, scrollProgress * 100)}%` : "0%"
-                    }}
-                    transition={{ duration: 0.2 }}
+                    animate={{ height: inView ? "80%" : "0%" }}
+                    transition={{ duration: 1 }}
                 />
                 
                 {/* Content items */}
@@ -110,17 +89,9 @@ const ProjectInitiation = ({ data }) => {
                                     damping: 20
                                 }}
                             >
-                                <div className={`rounded-full p-[3px] ${
-                                    index <= Math.floor(scrollProgress * data.length) 
-                                        ? "bg-gradient-to-tr from-[#4885EF] via-[#C560CF] to-[#DA5381]" 
-                                        : "bg-gray-200"
-                                }`}>
+                                <div className="rounded-full p-[3px] bg-gradient-to-tr from-[#4885EF] via-[#C560CF] to-[#DA5381]">
                                     <div className="w-[81px] aspect-square rounded-full bg-white flex items-center justify-center">
-                                        <div className={`w-[32px] aspect-square rounded-full ${
-                                            index <= Math.floor(scrollProgress * data.length) 
-                                                ? "bg-purple-500" 
-                                                : "bg-gray-200"
-                                        }`}></div>
+                                        <div className="w-[32px] aspect-square rounded-full bg-purple-500"></div>
                                     </div>
                                 </div>
                             </motion.div>
@@ -139,11 +110,7 @@ const ProjectInitiation = ({ data }) => {
                                     ease: "easeOut"
                                 }}
                             >
-                                <span className={`text-[24px] ${
-                                    index <= Math.floor(scrollProgress * data.length) 
-                                        ? "bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent" 
-                                        : "text-black"
-                                } font-normal`}>
+                                <span className="text-[24px] bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent font-normal">
                                     {item}
                                 </span>
                             </motion.div>
