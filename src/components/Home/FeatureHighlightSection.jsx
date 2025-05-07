@@ -138,7 +138,7 @@ const FeatureHighlightSection = () => {
         animate={leftContentControls}
         variants={containerVariants}
       >
-        <motion.h2
+        {/* <motion.h2
           className="md:text-4xl font-semibold leading-tight flex flex-col"
           variants={itemVariants}
         >
@@ -148,18 +148,22 @@ const FeatureHighlightSection = () => {
           <span className="text-black md:text-5xl text-4xl font-normal">
             grounded in promise.
           </span>
+        </motion.h2> */}
+        <motion.h2
+          className="md:text-4xl font-semibold  flex flex-col"
+          variants={itemVariants}
+        >
+          <span className="md:text-5xl text-4xl font-normal bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent pb-2">
+            Driven beyond limit,
+          </span>
+          <span className="text-black md:text-5xl text-4xl font-normal">
+            grounded in promise.
+          </span>
         </motion.h2>
 
-        <motion.div className="mt-8 space-y-6" variants={containerVariants}>
+        <div className="mt-8 space-y-6">
           {features.map((feature, idx) => (
-            <motion.div
-              key={idx}
-              className="flex items-center gap-6"
-              variants={itemVariants}
-              whileHover={{ x: 5, transition: { duration: 0.2 } }}
-              onHoverStart={() => setHoveredFeature(idx)}
-              onHoverEnd={() => setHoveredFeature(null)}
-            >
+            <div key={idx} className="flex items-center gap-6">
               <div className="h-8 w-8 flex items-center justify-center shrink-0">
                 <img
                   src={feature.icon}
@@ -176,9 +180,9 @@ const FeatureHighlightSection = () => {
                   {feature.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* Right Visual Content */}

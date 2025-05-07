@@ -153,7 +153,7 @@ export default function ServicesSection() {
       >
         {/* Left Panel */}
         <motion.div
-          className="border border-[#EAEAEA] flex flex-col w-fit rounded-[25px] px-[40px] py-[50px] space-y-[59px]"
+          className="border border-[#EAEAEA] flex flex-col w-auto rounded-[25px] px-[40px] py-[50px] space-y-[59px]"
           initial={{ x: -30, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -172,18 +172,6 @@ export default function ServicesSection() {
               key={idx}
               onClick={() => handleServiceClick(service)}
               className={`relative w-full whitespace-nowrap text-[24px] font-[400] text-start p-1 pb-[6px]`}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: 0.8 + idx * 0.1,
-                ease: [0.25, 0.1, 0.25, 1],
-              }}
-              whileHover={{
-                x: activeService !== service ? 5 : 0,
-                transition: { duration: 0.2 },
-              }}
-              whileTap={{ scale: 0.97 }}
             >
               <motion.span
                 className="flex items-center gap-3"
@@ -222,7 +210,7 @@ export default function ServicesSection() {
 
         {/* Right Panel with AnimatePresence for smooth transitions */}
         <motion.div
-          className="border md:col-span-2 border-[#EAEAEA] rounded-[25px] w-full px-[40px] py-[50px] space-y-[40px] overflow-hidden"
+          className="border md:col-span-2 border-[#EAEAEA] rounded-[25px] w-flex px-[40px] py-[50px] space-y-[40px] overflow-hidden"
           initial={{ x: 30, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.7 }}
