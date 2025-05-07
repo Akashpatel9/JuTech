@@ -11,14 +11,13 @@ const techLogos = [
   "/images/GO.png",
   "/images/FLUTTER.png",
   "/images/REACT.png",
-  "/images/JS.png",
-  "/images/AWS.png",
-  "/images/AZORE.png",
-  "/images/NODE.png",
-  "/images/CSS.png",
-  "/images/GO.png",
-  "/images/FLUTTER.png",
-  "/images/REACT.png",
+  "/images/CPP.png",
+  "/images/CSHARP.png",
+  "/images/ANGULAR1.png",
+  "/images/DART.png",
+  "/images/KOTLIN.png",
+  "/images/HTML.png",
+  "/images/WOO.png",
 ];
 
 const techLogoss = [
@@ -26,18 +25,17 @@ const techLogoss = [
   "/images/AWS.png",
   "/images/AZORE.png",
   "/images/NODE.png",
-  "/images/NODE.png",
-  "/images/CSS.png",
-  "/images/GO.png",
-  "/images/FLUTTER.png",
   "/images/CSS.png",
   "/images/GO.png",
   "/images/FLUTTER.png",
   "/images/REACT.png",
-  "/images/JS.png",
-  "/images/AWS.png",
-  "/images/AZORE.png",
-  "/images/REACT.png",
+  "/images/CPP.png",
+  "/images/CSHARP.png",
+  "/images/ANGULAR1.png",
+  "/images/DART.png",
+  "/images/KOTLIN.png",
+  "/images/HTML.png",
+  "/images/WOO.png",
 ];
 
 const CTASection = () => {
@@ -248,10 +246,10 @@ const CTASection = () => {
         {/* Scrolling container */}
         <motion.div
           className="flex flex-col gap-5"
-          animate={{ y: ["0%", "-50%"] }}
+          animate={{ y: ["0%", "50%"] }}
           transition={{
             repeat: Infinity,
-            duration: 20,
+            duration: 30,
             ease: "linear",
           }}
         >
@@ -267,7 +265,7 @@ const CTASection = () => {
       </motion.div>
       {/* ---------------- */}
       <motion.div
-        className="absolute -top-40 bottom-0 right-35 flex flex-col gap-5 flex-wrap md:h-[596px] -rotate-45 items-center justify-center overflow-hidden"
+        className="absolute -top-40 bottom-0 right-30 flex flex-col gap-5 flex-wrap md:h-[596px] -rotate-45 items-center justify-center overflow-hidden"
         animate={{
           x: hovering ? 40 : 0,
           opacity: hovering ? 0.4 : 1,
@@ -280,7 +278,7 @@ const CTASection = () => {
           animate={{ y: ["0%", "-50%"] }}
           transition={{
             repeat: Infinity,
-            duration: 20,
+            duration: 30,
             ease: "linear",
           }}
         >
@@ -438,38 +436,35 @@ const CTASection = () => {
 
               <motion.button
                 className="font-normal text-[16px] flex gap-2 items-center bg-black w-full rounded-[8px] py-[10px] px-[16px] text-white justify-center"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{
-                  y: 0,
-                  opacity: 1,
-                  transition: {
-                    duration: 0.3,
-                    delay: 0.8,
+                initial="initial"
+                animate="animate"
+                whileHover="hover"
+                whileTap="tap"
+                variants={{
+                  initial: { y: 20, opacity: 0 },
+                  animate: {
+                    opacity: 1,
+                    transition: { duration: 0.3 },
                   },
+                  hover: { scale: 1.03, backgroundColor: "#333" },
+                  tap: { scale: 0.97 },
                 }}
-                exit={{
-                  y: 20,
-                  opacity: 0,
-                }}
-                whileHover={{
-                  scale: 1.03,
-                  backgroundColor: "#333",
-                  transition: { duration: 0.2 },
-                }}
-                whileTap={{ scale: 0.97 }}
               >
                 Submit
-                <motion.span
-                  initial={{ x: 0 }}
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{
-                    duration: 1,
-                    repeat: Infinity,
-                    repeatType: "reverse",
+                <motion.div
+                  variants={{
+                    hover: {
+                      x: [0, 5, 0],
+                      transition: {
+                        duration: 1,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                      },
+                    },
                   }}
                 >
                   →
-                </motion.span>
+                </motion.div>
               </motion.button>
             </motion.div>
           </motion.div>
