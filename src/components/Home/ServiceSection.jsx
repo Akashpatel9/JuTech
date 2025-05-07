@@ -85,6 +85,7 @@ export default function ServicesSection() {
 
   return (
     <motion.div
+      id="services"
       className="w-full py-10"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

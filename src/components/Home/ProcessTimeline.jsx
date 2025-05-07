@@ -1,14 +1,5 @@
 import { useState } from "react";
-import {
-  FileText,
-  FolderKanban,
-  Paintbrush,
-  Code,
-  Search,
-  Rocket,
-  Headphones,
-  RefreshCw,
-} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import ProjectInitiation from "./Process/ProjectInitiation";
 import Gathering from "./Process/Gathering";
 import Planning from "./Process/Planning";
@@ -147,9 +138,9 @@ const ProcessTimeline = () => {
   };
 
   return (
-    <div className="w-full mx-auto p-8 bg-white font-sans">
+    <div id="process" className="w-full mx-auto p-8 bg-white font-sans">
       <h2 className="text-center -mb-3">
-        <span 
+        <motion.span 
           className="bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent md:text-[52px] text-4xl font-normal"
           style={{ backgroundSize: "200% 100%" }}
                 animate={{
@@ -163,7 +154,7 @@ const ProcessTimeline = () => {
                 }}
         >
           Our Process
-        </span>
+        </motion.span>
       </h2>
       <h3 className="text-center md:text-[52px] text-4xl mt-6 md:mt-0 font-normal mb-12 text-black">
         Our Proven Path to Project Success

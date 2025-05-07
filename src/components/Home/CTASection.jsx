@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TechLogos from "./TechLogos";
 
@@ -38,19 +38,29 @@ const techLogoss = [
   "/images/WOO.png",
 ];
 
-const CTASection = () => {
+const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
   const [hovering, setHovering] = useState(false);
+
+  useEffect(() => {
+    if (isVisibleCTASection) {
+      setTimeout(() => {
+        setHovering(true);
+      }, 1000);
+    }
+  }, [isVisibleCTASection]);
+
 
   const toggleForm = () => {
     setHovering((prev) => !prev);
+    setIsVisibleCTASection(false);
   };
 
   return (
-    <section className="relative bg-[#F6F6F9] rounded-[30px] pt-[105px] py-20 pl-[84px] mt-20 overflow-hidden">
+    <section id="contact" className="relative bg-[#F6F6F9] rounded-[30px] pt-[105px] py-20 pl-[84px] mt-20 overflow-hidden">
       {/* Text Section */}
       <div className="m:w-[839px]">
         <h2 className="md:text-[72px] text-2xl font-normal md:leading-20">
-          <span className="bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent"
+          <motion.span className="bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent"
             style={{ backgroundSize: "200% 100%" }}
             animate={{
               backgroundPosition: ["0% center", "100% center", "0% center"],
@@ -63,7 +73,7 @@ const CTASection = () => {
             }}
           >
             Ready to start
-          </span>{" "}
+          </motion.span>
           your <br />
           Project journey with us?
         </h2>

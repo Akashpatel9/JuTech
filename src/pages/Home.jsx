@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavBar } from "../components/common/NavBar";
 import HeroSection from "../components/Home/HeroSection";
 import StatsSection from "../components/Home/StatsSection";
@@ -11,10 +11,11 @@ import TestimonialsCarousel from "../components/Home/TestimonialsCarousel";
 import ProcessTimeline from "../components/Home/ProcessTimeline";
 
 const Home = () => {
+  const [isVisibleCTASection, setIsVisibleCTASection] = useState(false);
   return (
     <>
       <div className="px-5 md:px-[80px] select-none">
-        <NavBar />
+        <NavBar setIsVisibleCTASection={setIsVisibleCTASection} />
         <div className="">
           <HeroSection />
           <StatsSection />
@@ -22,7 +23,7 @@ const Home = () => {
           <ServiceSection />
           <ProcessTimeline />
           <TestimonialsCarousel />
-          <CTASection />
+          <CTASection setIsVisibleCTASection={setIsVisibleCTASection} isVisibleCTASection={isVisibleCTASection} />
           <CollaborateSection />
         </div>
       </div>

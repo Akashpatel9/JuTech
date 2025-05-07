@@ -155,7 +155,7 @@ const TestimonialsCarousel = () => {
     <section className="md:py-20 bg-white text-center relative ">
       <motion.div initial="hidden" animate="visible" variants={titleVariants}>
         <h2 className="leading-10">
-          <span className="bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] font-normal md:text-5xl text-3xl bg-clip-text text-transparent"
+          <motion.span className="bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] font-normal md:text-5xl text-3xl bg-clip-text text-transparent"
             style={{ backgroundSize: "200% 100%" }}
             animate={{
               backgroundPosition: ["0% center", "100% center", "0% center"],
@@ -168,7 +168,7 @@ const TestimonialsCarousel = () => {
             }}
           >
             What Our Customers Say:
-          </span>
+          </motion.span>
           <br />
           <span className="text-black font-normal md:text-5xl text-3xl">
             Real Stories of Success

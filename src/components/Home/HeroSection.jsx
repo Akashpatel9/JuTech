@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const HeroSection = () => {
-  // Track scroll position for parallax effects
+
   const { scrollY } = useScroll();
 
   return (

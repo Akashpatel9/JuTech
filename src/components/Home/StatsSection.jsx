@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CountUp from "react-countup";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -26,13 +26,43 @@ const StatsSection = () => {
     [0.95, 1, 1, 0.95]
   );
 
+  const elementRef = useRef(null);
+  const [hasScrolledIntoView, setHasScrolledIntoView] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (hasScrolledIntoView || !elementRef.current) return;
+
+      const rect = elementRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      const threshold = viewportHeight * 0.9; 
+
+      if (rect.top <= threshold) {
+        elementRef.current.scrollIntoView({ behavior: "smooth" });
+        setHasScrolledIntoView(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [hasScrolledIntoView]);
+
+
+
   return (
+    <div ref={elementRef}>
     <motion.div
+      id="stats"
       ref={ref}
       className="w-full md:mt-36 mt-10 py-[49px]"
       style={{ opacity }}
     >
-      <div className="grid grid-cols-4 text-center md:text-start md:h-[93px] md:gap-[56px] w-full">
+      <div
+        className="grid grid-cols-4 text-center md:text-start md:h-[93px] md:gap-[56px] w-full"
+      >
         {stats.map((stat, index) => (
           <motion.div
             key={index}
@@ -109,6 +139,7 @@ const StatsSection = () => {
         ))}
       </div>
     </motion.div>
+    </div>
   );
 };
 
