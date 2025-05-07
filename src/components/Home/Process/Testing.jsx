@@ -37,17 +37,30 @@ const cardVariants = {
 
 export default function Testing() {
   const [current, setCurrent] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setCurrent((prev) => (prev + 1) % data.length);
-    }, 2000); 
-    return () => clearTimeout(timer);
-  }, [current]);
+    if (!isHovered) {
+      const timer = setTimeout(() => {
+        setCurrent((prev) => (prev + 1) % data.length);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [current, isHovered]);
+
+  const handleNext = () => {
+    setCurrent((prev) => (prev + 1) % data.length);
+  };
 
   return (
     <div className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center">
-      <div className="relative w-[546px] h-[343px]">
+      <div 
+        className="relative w-[546px] h-[343px]"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={handleNext}
+        style={{ cursor: 'pointer' }}
+      >
         <AnimatePresence initial={false}>
           {data.slice(current, current + VISIBLE_CARDS).map((item, idx) => (
             <motion.div

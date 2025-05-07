@@ -12,17 +12,21 @@ export default function ProductMonitoring() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === data.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
   useEffect(() => {
     if (isPaused) return;
 
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === data.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 2200); // Total duration: 0.5s delay + 1s anim + 0.7s hold
+      handleNext();
+    }, 2200);
 
     return () => clearInterval(timer);
-  }, [isPaused, currentIndex]);
+  }, [isPaused]);
 
   const getCard = (indexOffset) => {
     const index = (currentIndex + indexOffset) % data.length;
@@ -35,7 +39,10 @@ export default function ProductMonitoring() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+      <div 
+        className="relative w-full h-full flex items-center justify-center overflow-hidden cursor-pointer"
+        onClick={handleNext}
+      >
         {[3, 2, 1, 0].map((offset) => {
           const card = getCard(offset);
           const isTopCard = offset === 0;

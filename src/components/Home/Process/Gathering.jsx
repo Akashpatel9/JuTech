@@ -68,28 +68,17 @@ export default function Gathering() {
       // Wait for first card animation to complete before starting SVG animation
       const startSvgAnimation = async () => {
         // Wait for first card animation (1.2s)
-        await new Promise(resolve => setTimeout(resolve, 1200));
+        await new Promise(resolve => setTimeout(resolve, 100));
         
         // Start SVG path animation
         svgControls.start({
           pathLength: [0, 1],
           opacity: [0, 1],
           transition: {
-            duration: 2.4, // Duration for remaining cards (3 cards * 1.2s)
+            duration:4.8,
             ease: "easeInOut",
           },
         });
-
-        // Update SVG height based on remaining card animations
-        setSvgIndex(1); // First height change
-        
-        // Wait for second card
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setSvgIndex(2);
-        
-        // Wait for third card
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setSvgIndex(3);
       };
       
       startSvgAnimation();
@@ -106,7 +95,7 @@ export default function Gathering() {
         <div key={index}>
           <motion.div
             className={`absolute ${step.position} z-10 w-[336px] bg-white shadow-xl rounded-[30px] px-[40px] py-[30px]`}
-            initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+            initial={{ opacity: 1, x: index % 2 === 0 ? -30 : 30 }}
             custom={index}
             animate={controls}
           >
@@ -117,7 +106,7 @@ export default function Gathering() {
                 opacity: 1,
                 y: 0,
                 transition: {
-                  delay: index * 1.2 + 0.3,
+                  delay: index * 1,
                   duration: 0.5,
                 },
               }}
@@ -144,41 +133,15 @@ export default function Gathering() {
                 y: 0,
               }}
               transition={{
-                delay: index * 1.2 + 0.6,
+                delay: index ,
                 duration: 1.2,
-                times: [0, 0.3, 0.6, 1],
+                times: [0],
                 ease: "easeInOut",
               }}
             >
               {step.title}
             </motion.div>
           </motion.div>
-
-          {/* Connecting lines - with original positioning */}
-          {/* {index === 0 && ( */}
-          {/* )} */}
-
-          {/* {index === 1 && (
-            <motion.div
-              className="absolute top-44 h-[320px] overflow-hidden left-44"
-              initial={{ opacity: 0, scaleY: 0, originY: 0 }}
-              custom={index}
-              animate={lineControls}
-            >
-              <img src="/svgs/progress/3.svg" alt="" />
-            </motion.div>
-          )}
-
-          {index === 2 && (
-            <motion.div
-              className="absolute top-44 overflow-hidden left-44"
-              initial={{ opacity: 0, scaleY: 0, originY: 0 }}
-              custom={index}
-              animate={lineControls}
-            >
-              <img src="/svgs/progress/3.svg" alt="" />
-            </motion.div>
-          )} */}
         </div>
       ))}
 

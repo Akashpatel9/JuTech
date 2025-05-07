@@ -105,14 +105,16 @@ export default function ServicesSection() {
           <motion.h1
             className="font-[400] md:text-[52px] text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381]"
             style={{ backgroundSize: "200% 100%" }}
-            animate={{
-              backgroundPosition: ["0% center", "100% center", "0% center"],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
+                animate={{
+                  backgroundPosition: ["0% center", "100% center", "0% center"],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+
+                }}
           >
             Services We Offer
           </motion.h1>
@@ -243,10 +245,22 @@ export default function ServicesSection() {
                 transition={{ duration: 0.3 }}
               >
                 <motion.h2
-                  className="text-[24px] flex items-center gap-3 font-medium bg-gradient-to-r from-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent"
+                  className="text-[24px] flex items-center gap-3 font-medium bg-gradient-to-r from-[#6D39F3] via-[#3956EB] to-[#6D39F3] bg-clip-text text-transparent"
+                  style={{ backgroundSize: "200% 100%" }}
                   initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
+                  animate={{ 
+                    opacity: 1, 
+                    y: 0,
+                    backgroundPosition: ["0% center", "100% center", "0% center"]
+                  }}
+                  transition={{
+                    backgroundPosition: {
+                      duration: 3,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      ease: "easeInOut"
+                    }
+                  }}
                 >
                   <img
                     className="fill-black"

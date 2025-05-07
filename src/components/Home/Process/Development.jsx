@@ -40,8 +40,8 @@ export default function Development() {
   return (
     <div 
       className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden"
-      // onMouseEnter={() => setIsPaused(true)}
-      // onMouseLeave={() => setIsPaused(false)}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       <div className="relative top-1/2 left-1/2">
         {data.map((item, index) => (
@@ -61,6 +61,8 @@ export default function Development() {
                 damping: 20,
                 duration: 1.2,
               }}
+              onClick={() => setActiveIndex((prev) => (prev + 1) % data.length)}
+              style={{ cursor: 'pointer' }}
             >
               <h1 className="text-[40px] font-normal">{item.id}</h1>
               <p className="text-[40px] font-normal">{item.title}</p>

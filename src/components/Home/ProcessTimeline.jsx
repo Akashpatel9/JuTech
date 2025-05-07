@@ -149,7 +149,19 @@ const ProcessTimeline = () => {
   return (
     <div className="w-full mx-auto p-8 bg-white font-sans">
       <h2 className="text-center -mb-3">
-        <span className="bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent md:text-[52px] text-4xl font-normal">
+        <span 
+          className="bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent md:text-[52px] text-4xl font-normal"
+          style={{ backgroundSize: "200% 100%" }}
+                animate={{
+                  backgroundPosition: ["0% center", "100% center", "0% center"],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+                }}
+        >
           Our Process
         </span>
       </h2>

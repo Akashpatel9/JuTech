@@ -50,7 +50,18 @@ const CTASection = () => {
       {/* Text Section */}
       <div className="m:w-[839px]">
         <h2 className="md:text-[72px] text-2xl font-normal md:leading-20">
-          <span className="bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent"
+            style={{ backgroundSize: "200% 100%" }}
+            animate={{
+              backgroundPosition: ["0% center", "100% center", "0% center"],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
+          >
             Ready to start
           </span>{" "}
           your <br />

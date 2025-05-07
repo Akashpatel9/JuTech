@@ -155,7 +155,18 @@ const TestimonialsCarousel = () => {
     <section className="md:py-20 bg-white text-center relative ">
       <motion.div initial="hidden" animate="visible" variants={titleVariants}>
         <h2 className="leading-10">
-          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 font-normal md:text-5xl text-3xl bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] font-normal md:text-5xl text-3xl bg-clip-text text-transparent"
+            style={{ backgroundSize: "200% 100%" }}
+            animate={{
+              backgroundPosition: ["0% center", "100% center", "0% center"],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
+          >
             What Our Customers Say:
           </span>
           <br />

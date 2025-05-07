@@ -10,21 +10,40 @@ export default function Planning() {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % data.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [data.length]);
+    if (!isHovered) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % data.length);
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [data.length, isHovered]);
 
   const getCard = (offset) => {
     const index = (currentIndex + offset + data.length) % data.length;
     return data[index];
   };
 
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % data.length);
+  };
+
+  const handleCardClick = (offset) => {
+    if (offset === 0) {
+      handleNext();
+    } else {
+      setCurrentIndex((prev) => (prev + offset + data.length) % data.length);
+    }
+  };
+
   return (
-    <div className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center">
+    <div 
+      className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div className="relative w-full h-[500px] flex items-center justify-center overflow-hidden z-10">
         {[-1, 0, 1].map((offset) => {
           const card = getCard(offset);
@@ -40,13 +59,20 @@ export default function Planning() {
                 scale: isActive ? 1 : 0.9,
                 x: offset * 460,
               }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
+              transition={{ 
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+                mass: 1,
+                duration: 0.5
+              }}
               className={`absolute ${marginTopClass} ${
                 isActive
                   ? "bg-gradient-to-b from-[#C0AEFE] via-[#6D39F3] to-[#3956EB]"
                   : "bg-white"
-              } w-[413px] h-[500px] rounded-[37px] px-[43px] py-[37px] flex flex-col justify-between shadow-md`}
+              } w-[413px] h-[500px] rounded-[37px] px-[43px] py-[37px] flex flex-col justify-between shadow-md cursor-pointer`}
               style={{ zIndex: isActive ? 10 : 1 }}
+              onClick={() => handleCardClick(offset)}
             >
               <div>
                 <h1

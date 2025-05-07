@@ -6,6 +6,11 @@
 @theme {
 }
 
+/* Add smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
 .Plus-Jakarta-Sans {
   font-family: "Plus Jakarta Sans", sans-serif;
 }

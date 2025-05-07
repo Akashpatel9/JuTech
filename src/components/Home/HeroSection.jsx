@@ -13,29 +13,73 @@ const HeroSection = () => {
         className="absolute hidden md:block right-0 md:-top-50 top-0 md:left-30 left-0 -z-20"
         initial={{ top: -200, left: 120, opacity: 0 }}
         animate={{
-          top: [-200, -100, -200],
-          left: [120, 100, 120],
+          top: [-200, -10, -200],
+          left: [120, 10, 120],
           opacity: 1,
         }}
         transition={{
-          duration: 10,
+          duration: 8,
           repeat: Infinity,
           ease: [0.43, 0.13, 0.23, 0.96],
-          opacity: { duration: 1 },
+          opacity: { duration: 0.2 },
+          ease: "easeInOut",
         }}
       />
 
-      <motion.img
-        src={`/svgs/GradientLine.svg`}
-        alt="Logo"
-        className="w-full hidden md:block object-cover absolute md:top-40 bottom-0 right-0 -z-10"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        style={{
-          y: useTransform(scrollY, [0, 200], [0, 15]), // Subtle parallax on scroll
-        }}
-      />
+      <motion.div className="w-full hidden md:block object-cover absolute md:top-40 bottom-0 right-0 -z-10">
+        <motion.svg
+          viewBox="0 0 1411 646"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{
+            backgroundSize: "200% 100%"
+          }}
+          animate={{
+            backgroundPosition: ["0% center", "100% center", "0% center"]
+          }}
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut"
+          }}
+        >
+          <motion.path
+            d="M1471.49 1C1481.7 110.205 1439.91 221.91 1351.4 321.988C1262.89 422.067 1131.64 506.023 974.239 563.242C816.84 620.461 640.364 648.371 467.129 643.444C293.894 638.517 131.68 600.973 1 535.561"
+            stroke="url(#paint0_linear_1_461)"
+            strokeWidth="4"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ 
+              pathLength: 1,
+              opacity: 1,
+              strokeDasharray: "0 1",
+              strokeDashoffset: [0, -1]
+            }}
+            transition={{
+              // duration: 2,
+              // ease: "easeInOut",
+              // repeat: Infinity,
+              // repeatType: "reverse"
+            }}
+          />
+          <defs>
+            <linearGradient
+              id="paint0_linear_1_461"
+              x1="214.5"
+              y1="662.5"
+              x2="1074.8"
+              y2="1054.45"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="white" />
+              <stop offset="0.305824" stop-color="#FF7557" />
+              <stop offset="0.539613" stop-color="#DE35FF" />
+              <stop offset="0.704599" stop-color="#173EFF" />
+              <stop offset="1" stop-color="#16F1FF" />
+            </linearGradient>
+          </defs>
+        </motion.svg>
+      </motion.div>
 
       <div className="md:w-[1013px] md:h-[585px] h-fit md:mt-20 mt-10">
         <motion.h1
@@ -53,17 +97,17 @@ const HeroSection = () => {
           Build Beyond{" "}
           <motion.span
             className="bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent inline-block"
-            style={{
-              backgroundSize: "200% 100%",
-            }}
-            animate={{
-              backgroundPosition: ["0% center", "100% center", "0% center"],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
+            style={{ backgroundSize: "200% 100%" }}
+                animate={{
+                  backgroundPosition: ["0% center", "100% center", "0% center"],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+
+                }}
           >
             Limits
           </motion.span>

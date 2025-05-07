@@ -153,9 +153,22 @@ const FeatureHighlightSection = () => {
           className="md:text-4xl font-semibold  flex flex-col"
           variants={itemVariants}
         >
-          <span className="md:text-5xl text-4xl font-normal bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent pb-2">
+          <motion.span 
+            className="md:text-5xl text-4xl font-normal bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent pb-2"
+            style={{ backgroundSize: "200% 100%" }}
+                animate={{
+                  backgroundPosition: ["0% center", "100% center", "0% center"],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+
+                }}
+          >
             Driven beyond limit,
-          </span>
+          </motion.span>
           <span className="text-black md:text-5xl text-4xl font-normal">
             grounded in promise.
           </span>

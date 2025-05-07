@@ -137,10 +137,18 @@ export default function CollaborateSection() {
               We Also
               <br />
               <motion.span 
-                className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent inline-block"
-                initial={{ backgroundPosition: "0% 50%" }}
-                animate={{ backgroundPosition: "100% 50%" }}
-                transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+                className="bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent inline-block"
+                style={{ backgroundSize: "200% 100%" }}
+                animate={{
+                  backgroundPosition: ["0% center", "100% center", "0% center"],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut",
+
+                }}
               >
                 Collaborate With
               </motion.span>
@@ -161,7 +169,7 @@ export default function CollaborateSection() {
 
         {/* Cards Grid */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10"
+          className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10"
           variants={containerVariants}
         >
           {cards.map((card, i) => (
@@ -177,7 +185,7 @@ export default function CollaborateSection() {
             >
               <Link
                 to="#"
-                className="group md:w-[320px] w-full relative overflow-hidden aspect-square rounded-[42px] bg-[#F6F6F9] px-[33px] py-[14px] flex flex-col justify-between"
+                className="group w-full relative overflow-hidden aspect-square rounded-[42px] bg-[#F6F6F9] px-[33px] py-[14px] flex flex-col justify-between"
               >
                 <div className="flex items-center justify-between">
                   <div>

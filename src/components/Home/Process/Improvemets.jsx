@@ -10,13 +10,20 @@ export default function Improvement() {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
+    if (isPaused) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % data.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, [data.length]);
+  }, [data.length, isPaused]);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % data.length);
+  };
 
   const getCard = (offset) => {
     const index = (currentIndex + offset + data.length) % data.length;
@@ -24,7 +31,11 @@ export default function Improvement() {
   };
 
   return (
-    <div className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center">
+    <div 
+      className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       <div className="relative w-full h-[450px] flex items-center justify-center overflow-hidden">
         {[-1, 0, 1].map((offset) => {
           const card = getCard(offset);
@@ -37,11 +48,12 @@ export default function Improvement() {
               animate={{
                 opacity: isActive ? 1 : 0.4,
                 scale: isActive ? 1 : 0.9,
-                x: offset * 460, // spacing between cards
+                x: offset * 460,
               }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="absolute w-[413px] h-[397px] bg-white rounded-[37px] px-[43px] py-[37px] flex flex-col justify-between shadow-md"
+              className="absolute w-[413px] h-[397px] bg-white rounded-[37px] px-[43px] py-[37px] flex flex-col justify-between shadow-md cursor-pointer"
               style={{ zIndex: isActive ? 10 : 1 }}
+              onClick={handleNext}
             >
               <div>
                 <h1 className="font-normal text-black text-[40px]">
