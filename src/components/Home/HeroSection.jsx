@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const HeroSection = () => {
-
   const { scrollY } = useScroll();
 
   return (
@@ -20,51 +19,68 @@ const HeroSection = () => {
         transition={{
           duration: 8,
           repeat: Infinity,
-          ease: [0.43, 0.13, 0.23, 0.96],
+          // ease: [0.43, 0.13, 0.23, 0.96],
           opacity: { duration: 0.2 },
           ease: "easeInOut",
         }}
       />
 
-<motion.div className="w-full hidden md:block object-cover absolute md:top-40 bottom-0 right-0 -z-10">
-  <svg
-    viewBox="0 0 1411 646"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <motion.path
-      d="M1471.49 1C1481.7 110.205 1439.91 221.91 1351.4 321.988C1262.89 422.067 1131.64 506.023 974.239 563.242C816.84 620.461 640.364 648.371 467.129 643.444C293.894 638.517 131.68 600.973 1 535.561"
-      stroke="url(#animatedGradient)"
-      strokeWidth="4"
-      initial={{ pathLength: 0, opacity: 0 }}
-      animate={{
-        pathLength: 1,
-        opacity: 1,
-      }}
-      transition={{
-        duration: 1,
-        ease: "easeInOut",
-      }}
-    />
-    <defs>
-      <linearGradient id="animatedGradient" gradientUnits="userSpaceOnUse">
-        <stop offset="0" stopColor="white" />
-        <stop offset="0.3" stopColor="#FF7557" />
-        <stop offset="0.54" stopColor="#DE35FF" />
-        <stop offset="0.7" stopColor="#173EFF" />
-        <stop offset="1" stopColor="#16F1FF" />
-        <animateTransform
-          attributeName="gradientTransform"
-          type="translate"
-          values="0,0; 500,0; 0,0"
-          dur="20s"
-          repeatCount="indefinite"
-        />
-      </linearGradient>
-    </defs>
-  </svg>
-</motion.div>
-
+      <motion.div className="w-full hidden md:block object-cover absolute md:top-40 bottom-0 right-0 -z-10">
+        <motion.svg
+          viewBox="0 0 1411 646"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{
+            backgroundSize: "200% 100%",
+          }}
+          animate={{
+            backgroundPosition: ["0% center", "100% center", "0% center"],
+          }}
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut",
+          }}
+        >
+          <motion.path
+            d="M1471.49 1C1481.7 110.205 1439.91 221.91 1351.4 321.988C1262.89 422.067 1131.64 506.023 974.239 563.242C816.84 620.461 640.364 648.371 467.129 643.444C293.894 638.517 131.68 600.973 1 535.561"
+            stroke="url(#paint0_linear_1_461)"
+            strokeWidth="4"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{
+              pathLength: 1,
+              opacity: 1,
+              strokeDasharray: "0 1",
+              strokeDashoffset: [0, -1],
+            }}
+            transition={
+              {
+                // duration: 2,
+                // ease: "easeInOut",
+                // repeat: Infinity,
+                // repeatType: "reverse"
+              }
+            }
+          />
+          <defs>
+            <linearGradient
+              id="paint0_linear_1_461"
+              x1="214.5"
+              y1="662.5"
+              x2="1074.8"
+              y2="1054.45"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="white" />
+              <stop offset="0.305824" stop-color="#FF7557" />
+              <stop offset="0.539613" stop-color="#DE35FF" />
+              <stop offset="0.704599" stop-color="#173EFF" />
+              <stop offset="1" stop-color="#16F1FF" />
+            </linearGradient>
+          </defs>
+        </motion.svg>
+      </motion.div>
 
       <div className="md:w-[1013px] md:h-[585px] h-fit md:mt-20 mt-10">
         <motion.h1
@@ -83,16 +99,15 @@ const HeroSection = () => {
           <motion.span
             className="bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent inline-block"
             style={{ backgroundSize: "200% 100%" }}
-                animate={{
-                  backgroundPosition: ["0% center", "100% center", "0% center"],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-
-                }}
+            animate={{
+              backgroundPosition: ["0% center", "100% center", "0% center"],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
           >
             Limits
           </motion.span>
