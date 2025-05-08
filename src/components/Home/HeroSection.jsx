@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const HeroSection = () => {
-
   const { scrollY } = useScroll();
 
   return (
@@ -20,7 +19,7 @@ const HeroSection = () => {
         transition={{
           duration: 8,
           repeat: Infinity,
-          ease: [0.43, 0.13, 0.23, 0.96],
+          // ease: [0.43, 0.13, 0.23, 0.96],
           opacity: { duration: 0.2 },
           ease: "easeInOut",
         }}
@@ -32,16 +31,16 @@ const HeroSection = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           style={{
-            backgroundSize: "200% 100%"
+            backgroundSize: "200% 100%",
           }}
           animate={{
-            backgroundPosition: ["0% center", "100% center", "0% center"]
+            backgroundPosition: ["0% center", "100% center", "0% center"],
           }}
           transition={{
             duration: 1,
             repeat: Infinity,
             repeatType: "reverse",
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         >
           <motion.path
@@ -49,18 +48,20 @@ const HeroSection = () => {
             stroke="url(#paint0_linear_1_461)"
             strokeWidth="4"
             initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ 
+            animate={{
               pathLength: 1,
               opacity: 1,
               strokeDasharray: "0 1",
-              strokeDashoffset: [0, -1]
+              strokeDashoffset: [0, -1],
             }}
-            transition={{
-              // duration: 2,
-              // ease: "easeInOut",
-              // repeat: Infinity,
-              // repeatType: "reverse"
-            }}
+            transition={
+              {
+                // duration: 2,
+                // ease: "easeInOut",
+                // repeat: Infinity,
+                // repeatType: "reverse"
+              }
+            }
           />
           <defs>
             <linearGradient
@@ -98,16 +99,15 @@ const HeroSection = () => {
           <motion.span
             className="bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent inline-block"
             style={{ backgroundSize: "200% 100%" }}
-                animate={{
-                  backgroundPosition: ["0% center", "100% center", "0% center"],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-
-                }}
+            animate={{
+              backgroundPosition: ["0% center", "100% center", "0% center"],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
           >
             Limits
           </motion.span>
