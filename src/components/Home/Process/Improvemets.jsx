@@ -71,9 +71,27 @@ export default function Improvement() {
       </div>
 
       {/* Gradient background */}
-      <div className="absolute -bottom-10 right-0 left-0 z-0">
-        <img src="/gradients/gradient2.svg" className="w-full" alt="" />
-      </div>
+      <motion.div 
+        className="absolute -bottom-10 right-0 left-0"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        <motion.img 
+          src="\gradients\gradient2.svg" 
+          className="w-full"
+          alt=""
+          animate={{
+            y: [30, -30, 30],
+            transition: {
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }
+          }}
+        />
+      </motion.div>
     </div>
   );
 }

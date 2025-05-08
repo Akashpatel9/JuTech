@@ -100,10 +100,10 @@ const StatsSection = () => {
                     }
                   : {}
               }
-              whileHover={{
-                color: "#6D39F3",
-                transition: { duration: 0.3 },
-              }}
+              // whileHover={{
+              //   color: "#6D39F3",
+              //   transition: { duration: 0.3 },
+              // }}
             >
               {inView && (
                 <CountUp

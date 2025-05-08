@@ -44,6 +44,11 @@ const services = {
 export default function ServicesSection() {
   const [activeService, setActiveService] = useState("Software Development");
   const [previousService, setPreviousService] = useState(null);
+
+
+  const [isHovered, setIsHovered] = useState(null);
+
+
   const [buttonStates, setButtonStates] = useState(
     Object.keys(services).reduce((acc, service) => {
       acc[service] = service === "Software Development" ? 100 : 0;
@@ -172,42 +177,58 @@ export default function ServicesSection() {
 
           {Object.keys(services).map((service, idx) => (
             <motion.button
-              key={idx}
-              onClick={() => handleServiceClick(service)}
-              className={`relative w-full whitespace-nowrap text-[24px] font-[400] text-start p-1 pb-[6px]`}
+            key={idx}
+            onClick={() => handleServiceClick(service)}
+            onMouseEnter={() => setIsHovered(idx)}
+            onMouseLeave={() => setIsHovered(null)}
+            className="relative w-full whitespace-nowrap text-[24px] font-[400] text-start p-1 pb-[6px]"
+          >
+            <motion.span
+              className="flex items-center gap-3"
+              animate={{
+                color: activeService === service ? "#000000" : "#646567",
+                fontWeight: activeService === service ? 500 : 400,
+                transition: { duration: 0.5 },
+                
+              }}
             >
-              <motion.span
-                className="flex items-center gap-3"
-                animate={{
-                  color: activeService === service ? "#000000" : "#646567",
-                  fontWeight: activeService === service ? 500 : 400,
-                  transition: { duration: 0.3 },
-                }}
-              >
-                <img
-                  className={`${activeService !== service && "opacity-50"}`}
-                  width={24}
-                  src={`/svgs/${services[service].svg}.svg`}
-                  alt=""
-                />
-                {service}
-              </motion.span>
+              <img
+                className={`${activeService !== service && "opacity-50"}`}
+                width={24}
+                src={`/svgs/${services[service].svg}.svg`}
+                alt=""
+              />
+              {service}
+            </motion.span>
+            
+            {/* Background track */}
+            <div className="absolute bottom-0 left-0 w-full h-[3px] bg-[#EAEAEA]"></div>
+            
+            {/* Default state underline (only visible when not active and not hovered) */}
+            {!isHovered && activeService !== service && (
               <motion.div
                 className="absolute bottom-0 left-0 h-[3px] bg-gradient-to-l from-[#4885EF] via-[#C560CF] to-[#DA5381]"
-                initial={{
-                  width: service === "Software Development" ? "100%" : "0%",
-                }}
-                animate={{
-                  width: `${buttonStates[service]}%`,
-                  transition: {
-                    duration: 0.5,
-                    ease: [0.25, 0.1, 0.25, 1],
-                  },
-                }}
+                style={{ width: `${buttonStates[service]}%` }}
               />
-              {/* Background track */}
-              <div className="absolute bottom-0 left-0 w-full h-[3px] bg-[#EAEAEA] -z-10"></div>
-            </motion.button>
+            )}
+            
+            {/* Hover/active underline with transform animation */}
+            <motion.div
+              className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-l from-[#4885EF] via-[#C560CF] to-[#DA5381]"
+              initial={{
+                transform: service === "Software Development" ? "scaleX(1)" : "scaleX(0)",
+                transformOrigin: "left"
+              }}
+              animate={{
+                transform: (isHovered === idx || activeService === service) ? "scaleX(1)" : "scaleX(0)",
+                transformOrigin: (isHovered === idx || activeService === service) ? "left" : "right",
+                transition: {
+                  duration: 0.5,
+                  ease: [0.25, 0.1, 0.25, 1]
+                }
+              }}
+            />
+          </motion.button>
           ))}
         </motion.div>
 
@@ -314,12 +335,12 @@ export default function ServicesSection() {
                               type: "spring",
                               stiffness: 400,
                               damping: 15,
-                              delay: 0.4 + idx * 0.1 + i * 0.05,
+                              delay: 0.1,
                             }}
                             whileHover={{
                               scale: 1.1,
                               boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-                              transition: { duration: 0.2 },
+                              transition: { duration: 0.1 },
                             }}
                             whileTap={{ scale: 0.95 }}
                           >
@@ -327,12 +348,12 @@ export default function ServicesSection() {
                               src={`/images/${item}.png`}
                               alt=""
                               whileHover={{
-                                rotate: [0, -5, 5, 0],
-                                transition: {
-                                  duration: 0.5,
-                                  repeat: Infinity,
-                                  repeatType: "reverse",
-                                },
+                                // rotate: [0, -5, 5, 0],
+                                // transition: {
+                                //   duration: 0.2,
+                                //   repeat: Infinity,
+                                //   repeatType: "reverse",
+                                // },
                               }}
                               className="bg-[#F5F5F5] scale-125"
                               width={24}

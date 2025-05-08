@@ -149,7 +149,7 @@ export default function Footer() {
             // viewport={{ once: true }}
           >
             <Link
-              to="https://linkedin.com"
+              to="https://www.linkedin.com/company/106713603"
               className="h-[60px] aspect-square bg-white border-[0.82px] border-[#E5E5E5] rounded-[14px] flex items-center justify-center group"
               aria-label="LinkedIn"
             >
