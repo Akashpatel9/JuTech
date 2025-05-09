@@ -17,7 +17,7 @@ const cardVariants = {
     y: 20 * i,
     scale: 1 - 0.05 * i,
     zIndex: data.length - i,
-    boxShadow: `0px ${8 + 4 * i}px ${24 + 8 * i}px 0px rgba(0,0,0,0.15)`
+    boxShadow: `0px ${8 + 4 * i}px ${24 + 8 * i}px 0px rgba(0,0,0,0.15)`,
   }),
   exit: {
     opacity: 0,
@@ -53,13 +53,13 @@ export default function Testing() {
   };
 
   return (
-    <div className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center">
-      <div 
+    <div className="relative  md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center">
+      <div
         className="relative w-[546px] h-[343px]"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={handleNext}
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: "pointer" }}
       >
         <AnimatePresence initial={false}>
           {data.slice(current, current + VISIBLE_CARDS).map((item, idx) => (
@@ -81,15 +81,15 @@ export default function Testing() {
         </AnimatePresence>
       </div>
 
-      <motion.div 
+      <motion.div
         className="absolute -bottom-10 right-0 left-0"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <motion.img 
-          src="\gradients\gradient2.svg" 
+        <motion.img
+          src="\gradients\gradient2.svg"
           className="w-full"
           alt=""
           animate={{
@@ -97,8 +97,8 @@ export default function Testing() {
             transition: {
               duration: 8,
               repeat: Infinity,
-              ease: "easeInOut"
-            }
+              ease: "easeInOut",
+            },
           }}
         />
       </motion.div>

@@ -40,7 +40,7 @@ export default function Planning() {
 
   return (
     <div
-      className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center"
+      className="relative  md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

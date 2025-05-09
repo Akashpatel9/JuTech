@@ -159,8 +159,7 @@ const ProcessTimeline = () => {
       <h3 className="text-center md:text-[52px] text-4xl mt-6 md:mt-0 font-normal mb-12 text-black">
         Our Proven Path to Project Success
       </h3>
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Left sidebar with steps */}
+      {/* <div className="flex flex-col md:flex-row gap-8">
         <div className="md:w-1/3 relative">
           <div className="absolute left-[20%] -translate-[1.6px] top-0 bottom-0 w-[2px] bg-[#ECEEF3]"></div>
 
@@ -209,7 +208,6 @@ const ProcessTimeline = () => {
           </div>
         </div>
 
-        {/* Right content area */}
         {activeStep === 1 && (
           <ProjectInitiation
             data={steps.find((s) => s.id === activeStep)?.content || []}
@@ -223,6 +221,74 @@ const ProcessTimeline = () => {
         {activeStep === 7 && <Deployment />}
         {activeStep === 8 && <ProductMonitoring />}
         {activeStep === 9 && <Improvement />}
+      </div> */}
+
+      <div className="flex flex-col md:flex-row gap-8 h-[1050px] w-full">
+        {/* Left sidebar */}
+        <div className="md:w-1/3 relative overflow-y-auto scrollbar-hidden h-full">
+          <div className="absolute left-[20%] -translate-[1.6px] top-0 bottom-0 w-[2px] bg-[#ECEEF3]"></div>
+
+          <div className="space-y-10 pr-4">
+            {steps.map((step, idx) => (
+              <div
+                key={idx}
+                className="relative grid grid-cols-5 cursor-pointer"
+                onClick={() => handleStepClick(step.id)}
+              >
+                <div
+                  className={`h-full col-span-1 flex items-center ${
+                    step.id === activeStep && "border-r-[2px] border-[#CC41E4]"
+                  }`}
+                >
+                  <h1
+                    className={`font-medium text-[36px] px-1 mb-4 ${
+                      step.id !== activeStep && "text-[#E6E6E6]"
+                    }`}
+                  >
+                    0{idx + 1}
+                  </h1>
+                </div>
+                <div className="col-span-4 px-4">
+                  <div>
+                    <img src={step.icon} alt={step.title} />
+                  </div>
+                  <h4
+                    className={`mt-2 text-[20px] font-medium ${
+                      step.id === activeStep
+                        ? "bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] text-transparent bg-clip-text"
+                        : "text-[#18191C]"
+                    }`}
+                  >
+                    {step.title}
+                  </h4>
+                  {step.id === activeStep && step.goal && (
+                    <p className="text-sm text-gray-600 mt-2">
+                      <span className="font-medium text-[16px]">Goal: </span>
+                      {step.goal}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right content area */}
+        <div className="h-full  md:w-2/3 overflow-y-auto scrollbar-hidden">
+          {activeStep === 1 && (
+            <ProjectInitiation
+              data={steps.find((s) => s.id === activeStep)?.content || []}
+            />
+          )}
+          {activeStep === 2 && <Gathering />}
+          {activeStep === 3 && <Planning />}
+          {activeStep === 4 && <WorkflowDiagram />}
+          {activeStep === 5 && <Development />}
+          {activeStep === 6 && <Testing />}
+          {activeStep === 7 && <Deployment />}
+          {activeStep === 8 && <ProductMonitoring />}
+          {activeStep === 9 && <Improvement />}
+        </div>
       </div>
     </div>
   );

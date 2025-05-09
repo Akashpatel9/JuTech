@@ -189,7 +189,9 @@ export default function ServicesSection() {
                 }}
               >
                 <img
-                  className={`${activeService !== service && "opacity-50"}`}
+                  className={`${activeService !== service && "opacity-50"} ${
+                    services[service].svg === "development2" ? "scale-70" : ""
+                  }`}
                   width={24}
                   src={`/svgs/${services[service].svg}.svg`}
                   alt=""
