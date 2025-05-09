@@ -45,9 +45,7 @@ export default function ServicesSection() {
   const [activeService, setActiveService] = useState("Software Development");
   const [previousService, setPreviousService] = useState(null);
 
-
   const [isHovered, setIsHovered] = useState(null);
-
 
   const [buttonStates, setButtonStates] = useState(
     Object.keys(services).reduce((acc, service) => {
@@ -111,16 +109,15 @@ export default function ServicesSection() {
           <motion.h1
             className="font-[400] md:text-[52px] text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381]"
             style={{ backgroundSize: "200% 100%" }}
-                animate={{
-                  backgroundPosition: ["0% center", "100% center", "0% center"],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-
-                }}
+            animate={{
+              backgroundPosition: ["0% center", "100% center", "0% center"],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
           >
             Services We Offer
           </motion.h1>
@@ -177,6 +174,7 @@ export default function ServicesSection() {
 
           {Object.keys(services).map((service, idx) => (
             <motion.button
+<<<<<<< HEAD
             key={idx}
             onClick={() => handleServiceClick(service)}
             onMouseEnter={() => setIsHovered(idx)}
@@ -207,29 +205,65 @@ export default function ServicesSection() {
             
             {/* Default state underline (only visible when not active and not hovered) */}
             {!isHovered && activeService !== service && (
+=======
+              key={idx}
+              onClick={() => handleServiceClick(service)}
+              onMouseEnter={() => setIsHovered(idx)}
+              onMouseLeave={() => setIsHovered(null)}
+              className="relative w-full whitespace-nowrap text-[24px] font-[400] text-start p-1 pb-[6px] cursor-pointer"
+            >
+              <motion.span
+                className="flex items-center gap-3"
+                animate={{
+                  color: activeService === service ? "#000000" : "#646567",
+                  fontWeight: activeService === service ? 500 : 400,
+                  transition: { duration: 0.5 },
+                }}
+              >
+                <img
+                  className={`${activeService !== service && "opacity-50"} ${
+                    services[service].svg === "development2" ? "scale-70" : ""
+                  }`}
+                  width={24}
+                  src={`/svgs/${services[service].svg}.svg`}
+                  alt=""
+                />
+                {service}
+              </motion.span>
+
+              {/* Background track */}
+              <div className="absolute bottom-0 left-0 w-full h-[3px] bg-[#EAEAEA]"></div>
+
+              {/* Default state underline (only visible when not active and not hovered) */}
+              {!isHovered && activeService !== service && (
+                <motion.div
+                  className="absolute bottom-0 left-0 h-[3px] bg-gradient-to-l from-[#4885EF] via-[#C560CF] to-[#DA5381]"
+                  style={{ width: `${buttonStates[service]}%` }}
+                />
+              )}
+
+              {/* Hover/active underline with transform animation */}
+>>>>>>> 26e50d5e842a00f850f0818a06745c210a491465
               <motion.div
-                className="absolute bottom-0 left-0 h-[3px] bg-gradient-to-l from-[#4885EF] via-[#C560CF] to-[#DA5381]"
-                style={{ width: `${buttonStates[service]}%` }}
+                className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-l from-[#4885EF] via-[#C560CF] to-[#DA5381]"
+                initial={{
+                  transform:
+                    service === "Software Development"
+                      ? "scaleX(1)"
+                      : "scaleX(0)",
+                  transformOrigin: "left",
+                }}
+                animate={{
+                  transform:
+                    activeService === service ? "scaleX(1)" : "scaleX(0)",
+                  transformOrigin: activeService === service ? "left" : "right",
+                  transition: {
+                    duration: 0.5,
+                    ease: [0.25, 0.1, 0.25, 1],
+                  },
+                }}
               />
-            )}
-            
-            {/* Hover/active underline with transform animation */}
-            <motion.div
-              className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-l from-[#4885EF] via-[#C560CF] to-[#DA5381]"
-              initial={{
-                transform: service === "Software Development" ? "scaleX(1)" : "scaleX(0)",
-                transformOrigin: "left"
-              }}
-              animate={{
-                transform: (isHovered === idx || activeService === service) ? "scaleX(1)" : "scaleX(0)",
-                transformOrigin: (isHovered === idx || activeService === service) ? "left" : "right",
-                transition: {
-                  duration: 0.5,
-                  ease: [0.25, 0.1, 0.25, 1]
-                }
-              }}
-            />
-          </motion.button>
+            </motion.button>
           ))}
         </motion.div>
 
@@ -271,18 +305,22 @@ export default function ServicesSection() {
                   className="text-[24px] flex items-center gap-3 font-medium bg-gradient-to-r from-[#6D39F3] via-[#3956EB] to-[#6D39F3] bg-clip-text text-transparent"
                   style={{ backgroundSize: "200% 100%" }}
                   initial={{ opacity: 0, y: 5 }}
-                  animate={{ 
-                    opacity: 1, 
+                  animate={{
+                    opacity: 1,
                     y: 0,
-                    backgroundPosition: ["0% center", "100% center", "0% center"]
+                    backgroundPosition: [
+                      "0% center",
+                      "100% center",
+                      "0% center",
+                    ],
                   }}
                   transition={{
                     backgroundPosition: {
                       duration: 3,
                       repeat: Infinity,
                       repeatType: "reverse",
-                      ease: "easeInOut"
-                    }
+                      ease: "easeInOut",
+                    },
                   }}
                 >
                   <img
@@ -348,14 +386,16 @@ export default function ServicesSection() {
                             <motion.img
                               src={`/images/${item}.png`}
                               alt=""
-                              whileHover={{
-                                // rotate: [0, -5, 5, 0],
-                                // transition: {
-                                //   duration: 0.2,
-                                //   repeat: Infinity,
-                                //   repeatType: "reverse",
-                                // },
-                              }}
+                              whileHover={
+                                {
+                                  // rotate: [0, -5, 5, 0],
+                                  // transition: {
+                                  //   duration: 0.2,
+                                  //   repeat: Infinity,
+                                  //   repeatType: "reverse",
+                                  // },
+                                }
+                              }
                               className="bg-[#F5F5F5] scale-125"
                               width={24}
                               height={24}

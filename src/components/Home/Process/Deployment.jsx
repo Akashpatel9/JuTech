@@ -5,11 +5,16 @@ const data = [
   { id: "01", title: "Execute deployment (blue/green or rolling)." },
   { id: "02", title: "Provide end-user training." },
   { id: "03", title: "Monitor post-deployment." },
+  { id: "04", title: "Ensure smooth transition to production." },
 ];
 
 export default function Deployment() {
   return (
+<<<<<<< HEAD
     <div className="relative hidden md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden md:flex items-center justify-center">
+=======
+    <div className="relative  md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center">
+>>>>>>> 26e50d5e842a00f850f0818a06745c210a491465
       <div className="flex flex-col  gap-6 z-10 max-w-md w-full">
         {data.map((item, index) => (
           <motion.div
@@ -27,15 +32,15 @@ export default function Deployment() {
           </motion.div>
         ))}
       </div>
-      <motion.div 
+      <motion.div
         className="absolute -bottom-10 right-0 left-0"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <motion.img 
-          src="\gradients\gradient2.svg" 
+        <motion.img
+          src="\gradients\gradient2.svg"
           className="w-full"
           alt=""
           animate={{
@@ -43,8 +48,8 @@ export default function Deployment() {
             transition: {
               duration: 8,
               repeat: Infinity,
-              ease: "easeInOut"
-            }
+              ease: "easeInOut",
+            },
           }}
         />
       </motion.div>

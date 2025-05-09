@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 
 export default function Gathering() {
   const [svgIndex, setSvgIndex] = useState(0);
-  
+
   const steps = [
     {
       number: "01",
@@ -68,19 +68,19 @@ export default function Gathering() {
       // Wait for first card animation to complete before starting SVG animation
       const startSvgAnimation = async () => {
         // Wait for first card animation (1.2s)
-        await new Promise(resolve => setTimeout(resolve, 100));
-        
+        await new Promise((resolve) => setTimeout(resolve, 100));
+
         // Start SVG path animation
         svgControls.start({
           pathLength: [0, 1],
           opacity: [0, 1],
           transition: {
-            duration:4.8,
+            duration: 4.8,
             ease: "easeInOut",
           },
         });
       };
-      
+
       startSvgAnimation();
     }
   }, [controls, lineControls, svgControls, inView]);
@@ -88,7 +88,11 @@ export default function Gathering() {
   return (
     <div
       ref={ref}
+<<<<<<< HEAD
       className="relative hidden md:block md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden"
+=======
+      className="relative  md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden"
+>>>>>>> 26e50d5e842a00f850f0818a06745c210a491465
     >
       {/* Process cards */}
       {steps.map((step, index) => (
@@ -133,7 +137,7 @@ export default function Gathering() {
                 y: 0,
               }}
               transition={{
-                delay: index ,
+                delay: index,
                 duration: 1.2,
                 times: [0],
                 ease: "easeInOut",
@@ -153,9 +157,7 @@ export default function Gathering() {
       >
         <svg
           width="367"
-          height={
-            "621"
-          }
+          height={"621"}
           viewBox="0 0 367 621"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -171,17 +173,15 @@ export default function Gathering() {
         </svg>
       </motion.div>
 
-
-
-      <motion.div 
+      <motion.div
         className="absolute -bottom-10 right-0 left-0"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <motion.img 
-          src="\gradients\gradient2.svg" 
+        <motion.img
+          src="\gradients\gradient2.svg"
           className="w-full"
           alt=""
           animate={{
@@ -189,8 +189,8 @@ export default function Gathering() {
             transition: {
               duration: 8,
               repeat: Infinity,
-              ease: "easeInOut"
-            }
+              ease: "easeInOut",
+            },
           }}
         />
       </motion.div>
