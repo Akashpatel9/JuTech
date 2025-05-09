@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 
 export default function ProductMonitoring() {
   const data = [
-    { id: "01", title: "Develop project plan and timeline." },
-    { id: "02", title: "User training." },
-    { id: "03", title: "Deployment." },
-    { id: "04", title: "Production." },
+    { id: "01", title: "Monitor product usage and gather feedback." },
+    { id: "02", title: "Address critical issues and bugs." },
+    { id: "03", title: "Provide ongoing support and maintenance." },
+    { id: "04", title: "Release necessary updates." },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -39,7 +39,7 @@ export default function ProductMonitoring() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div 
+      <div
         className="relative w-full h-full flex items-center justify-center overflow-hidden cursor-pointer"
         onClick={handleNext}
       >
@@ -87,15 +87,15 @@ export default function ProductMonitoring() {
         })}
       </div>
 
-      <motion.div 
+      <motion.div
         className="absolute -bottom-10 right-0 left-0"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <motion.img 
-          src="\gradients\gradient2.svg" 
+        <motion.img
+          src="\gradients\gradient2.svg"
           className="w-full"
           alt=""
           animate={{
@@ -103,8 +103,8 @@ export default function ProductMonitoring() {
             transition: {
               duration: 8,
               repeat: Infinity,
-              ease: "easeInOut"
-            }
+              ease: "easeInOut",
+            },
           }}
         />
       </motion.div>

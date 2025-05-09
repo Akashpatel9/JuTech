@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const data = [
   { id: "01", title: "Develop in sprints or phases." },
-  { id: "02", title: "Design system architecture and tech stack." },
-  { id: "03", title: "Define user stories with acceptance criteria." },
-  { id: "04", title: "Prioritize features." },
+  { id: "02", title: "Use version control (Git) and peer reviews." },
+  { id: "03", title: "Implement unit and integration tests." },
+  { id: "04", title: "Complete core features." },
 ];
 
 export default function Development() {
@@ -18,15 +18,14 @@ export default function Development() {
         setActiveIndex((prev) => (prev + 1) % data.length);
       }
     }, 2000);
-  
+
     return () => clearInterval(interval);
   }, [isPaused]);
-  
 
   const getCardStyles = (index) => {
     // Calculate position in stack relative to active card
     const diff = (index - activeIndex + data.length) % data.length;
-    
+
     // Position 0 is front, others are stacked behind with increasing z-index
     return {
       zIndex: data.length - diff,
@@ -38,7 +37,7 @@ export default function Development() {
   };
 
   return (
-    <div 
+    <div
       className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -48,11 +47,11 @@ export default function Development() {
           <AnimatePresence key={item.id} mode="popLayout">
             <motion.div
               className="absolute w-[546px] h-[343px] -translate-y-1/2 -translate-x-1/2 bg-gradient-to-br from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] text-white px-[37px] py-[43px] rounded-[37px] flex flex-col justify-between"
-              initial={{ 
-                scale: 0.9, 
-                y: 50, 
+              initial={{
+                scale: 0.9,
+                y: 50,
                 opacity: 0,
-                zIndex: -1 
+                zIndex: -1,
               }}
               animate={getCardStyles(index)}
               transition={{
@@ -62,7 +61,7 @@ export default function Development() {
                 duration: 1.2,
               }}
               onClick={() => setActiveIndex((prev) => (prev + 1) % data.length)}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
             >
               <h1 className="text-[40px] font-normal">{item.id}</h1>
               <p className="text-[40px] font-normal">{item.title}</p>
@@ -70,15 +69,15 @@ export default function Development() {
           </AnimatePresence>
         ))}
       </div>
-      <motion.div 
+      <motion.div
         className="absolute -bottom-10 right-0 left-0"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <motion.img 
-          src="\gradients\gradient2.svg" 
+        <motion.img
+          src="\gradients\gradient2.svg"
           className="w-full"
           alt=""
           animate={{
@@ -86,8 +85,8 @@ export default function Development() {
             transition: {
               duration: 8,
               repeat: Infinity,
-              ease: "easeInOut"
-            }
+              ease: "easeInOut",
+            },
           }}
         />
       </motion.div>

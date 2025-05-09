@@ -5,6 +5,7 @@ const data = [
   { id: "01", title: "Execute deployment (blue/green or rolling)." },
   { id: "02", title: "Provide end-user training." },
   { id: "03", title: "Monitor post-deployment." },
+  { id: "04", title: "Ensure smooth transition to production." },
 ];
 
 export default function Deployment() {
@@ -27,15 +28,15 @@ export default function Deployment() {
           </motion.div>
         ))}
       </div>
-      <motion.div 
+      <motion.div
         className="absolute -bottom-10 right-0 left-0"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <motion.img 
-          src="\gradients\gradient2.svg" 
+        <motion.img
+          src="\gradients\gradient2.svg"
           className="w-full"
           alt=""
           animate={{
@@ -43,8 +44,8 @@ export default function Deployment() {
             transition: {
               duration: 8,
               repeat: Infinity,
-              ease: "easeInOut"
-            }
+              ease: "easeInOut",
+            },
           }}
         />
       </motion.div>

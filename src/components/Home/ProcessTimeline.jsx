@@ -18,7 +18,7 @@ const ProcessTimeline = () => {
       id: 1,
       number: "01",
       title: "Project Initiation",
-      icon: 'svgs/processtimeline/1.svg',
+      icon: "svgs/processtimeline/1.svg",
       goal: "Align stakeholders on project objectives.",
       content: [
         "Define project scope and objectives.",
@@ -31,7 +31,7 @@ const ProcessTimeline = () => {
       id: 2,
       number: "02",
       title: "Requirements Gathering and Analysis",
-      icon: 'svgs/processtimeline/2.svg',
+      icon: "svgs/processtimeline/2.svg",
       goal: "Define product requirements clearly.",
       content: [
         "Conduct workshops and interviews.",
@@ -44,32 +44,33 @@ const ProcessTimeline = () => {
       id: 3,
       number: "03",
       title: "Planning and Design",
-      icon: 'svgs/processtimeline/3.svg',
+      icon: "svgs/processtimeline/3.svg",
       goal: "Plan and design system architecture.",
       content: [
         "Develop project plan and timeline.",
         "Design system architecture and tech stack.",
         "Identify risks and mitigation strategies.",
+        "Allocate resources.",
       ],
     },
     {
       id: 4,
       number: "04",
       title: "UI/UX Design",
-      icon: 'svgs/processtimeline/4.svg',
+      icon: "svgs/processtimeline/4.svg",
       goal: "Design an intuitive user interface.",
       content: [
         "Create wireframes, UI mockups, and user flows.",
         "Conduct user testing.",
         "Iterate design based on feedback.",
-        "UI/UX design for development.",
+        "Finalize UI/UX design for development.",
       ],
     },
     {
       id: 5,
       number: "05",
       title: "Development and Coding",
-      icon: 'svgs/processtimeline/5.svg',
+      icon: "svgs/processtimeline/5.svg",
       goal: "Build the product.",
       content: [
         "Develop in sprints or phases.",
@@ -82,7 +83,7 @@ const ProcessTimeline = () => {
       id: 6,
       number: "06",
       title: "Quality Assurance and Testing",
-      icon: 'svgs/processtimeline/6.svg',
+      icon: "svgs/processtimeline/6.svg",
       goal: "Ensure product quality.",
       content: [
         "Create and execute test cases.",
@@ -95,7 +96,7 @@ const ProcessTimeline = () => {
       id: 7,
       number: "07",
       title: "Deployment and Go Live",
-      icon: 'svgs/processtimeline/7.svg',
+      icon: "svgs/processtimeline/7.svg",
       goal: "Deploy the product successfully.",
       content: [
         "Execute deployment (blue/green or rolling).",
@@ -108,27 +109,26 @@ const ProcessTimeline = () => {
       id: 8,
       number: "08",
       title: "Product Monitoring and Support",
-      icon: 'svgs/processtimeline/8.svg',
+      icon: "svgs/processtimeline/8.svg",
       goal: "Ensure continuous product performance.",
       content: [
-        "Develop project plan and timeline.",
-        "Provide end-user training.",
-        "Monitor post-deployment.",
-        "Ensure smooth transition to production.",
+        "Monitor product usage and gather feedback.",
+        "Address critical issues and bugs.",
+        "Provide ongoing support and maintenance.",
+        "Release necessary updates.",
       ],
     },
     {
       id: 9,
       number: "09",
       title: "Continuous Improvement",
-      icon: 'svgs/processtimeline/9.svg',
+      icon: "svgs/processtimeline/9.svg",
       goal: "Enhance the product based on feedback.",
       content: [
-        "Execute deployment (blue/green or rolling).",
-        "Identify improvement areas.",
-        "Implement enhancements.",
-        "Provide end-user training.",
-        "Monitor post-deployment.",
+        "Collect user feedback regularly.",
+        "Prioritize and implement improvements.",
+        "Release iterative updates.",
+        "Track performance and user satisfaction.",
       ],
     },
   ];
@@ -140,18 +140,18 @@ const ProcessTimeline = () => {
   return (
     <div id="process" className="w-full mx-auto p-8 bg-white font-sans">
       <h2 className="text-center -mb-3">
-        <motion.span 
+        <motion.span
           className="bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent md:text-[52px] text-4xl font-normal"
           style={{ backgroundSize: "200% 100%" }}
-                animate={{
-                  backgroundPosition: ["0% center", "100% center", "0% center"],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-                }}
+          animate={{
+            backgroundPosition: ["0% center", "100% center", "0% center"],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut",
+          }}
         >
           Our Process
         </motion.span>
