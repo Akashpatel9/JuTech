@@ -10,7 +10,7 @@ const data = [
 
 export default function Deployment() {
   return (
-    <div className="relative  md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center">
+    <div className="relative hidden md:flex md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden  items-center justify-center">
       <div className="flex flex-col  gap-6 z-10 max-w-md w-full">
         {data.map((item, index) => (
           <motion.div

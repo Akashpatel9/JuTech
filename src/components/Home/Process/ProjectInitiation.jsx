@@ -45,7 +45,7 @@ const ProjectInitiation = ({ data }) => {
   return (
     <div
       ref={containerRef}
-      className="relative  md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden px-[85px] py-[188px]"
+      className="relative hidden md:block md:w-full  bg-[#F6F6F9] rounded-[30px] overflow-hidden px-[85px] py-[188px]"
     >
       {/* Gradient background overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-50/30 via-purple-50/30 to-pink-50/30" />

@@ -14,17 +14,17 @@ export default function Gathering() {
     {
       number: "02",
       title: "Create a product backlog or requirements document",
-      position: "top-[230px] right-16 rotate-[-9.9deg]",
+      position: "top-[240px] right-16 rotate-[-9.9deg]",
     },
     {
       number: "03",
       title: "Define user stories with acceptance criteria",
-      position: "top-[480px] left-16 rotate-[6.82deg]",
+      position: "top-[460px] left-16 rotate-[6.82deg]",
     },
     {
       number: "04",
       title: "Prioritize features",
-      position: "top-[730px] right-16 rotate-[-9.9deg]",
+      position: "top-[690px] right-16 rotate-[-9.9deg]",
     },
   ];
 
@@ -88,19 +88,19 @@ export default function Gathering() {
   return (
     <div
       ref={ref}
-      className="relative  md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden"
+      className="relative hidden md:block md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden "
     >
       {/* Process cards */}
       {steps.map((step, index) => (
         <div key={index}>
           <motion.div
-            className={`absolute ${step.position} z-10 w-[336px] bg-white shadow-xl rounded-[30px] px-[40px] py-[30px]`}
+            className={`absolute ${step.position} z-10 w-[336px] bg-white shadow-xl rounded-[30px] px-[25px] py-[25px]`}
             initial={{ opacity: 1, x: index % 2 === 0 ? -30 : 30 }}
             custom={index}
             animate={controls}
           >
             <motion.div
-              className="font-normal text-[32px] text-center mb-5"
+              className="font-normal text-[28px] text-center mb-4"
               initial={{ opacity: 0, y: -10 }}
               animate={{
                 opacity: 1,
@@ -114,7 +114,7 @@ export default function Gathering() {
               {step.number}
             </motion.div>
             <motion.div
-              className="py-[25px] px-[34px] rounded-[26px] font-normal text-[24px]"
+              className="py-[25px] px-[34px] rounded-[26px] font-normal text-[20px]"
               initial={{
                 background: "#E5E5E5",
                 color: "#666666",

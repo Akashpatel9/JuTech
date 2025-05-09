@@ -53,7 +53,7 @@ export default function Testing() {
   };
 
   return (
-    <div className="relative  md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center">
+    <div className="relative hidden md:flex md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden  items-center justify-center">
       <div
         className="relative w-[546px] h-[343px]"
         onMouseEnter={() => setIsHovered(true)}

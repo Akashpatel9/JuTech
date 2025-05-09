@@ -178,7 +178,7 @@ export default function ServicesSection() {
               onClick={() => handleServiceClick(service)}
               onMouseEnter={() => setIsHovered(idx)}
               onMouseLeave={() => setIsHovered(null)}
-              className="relative w-full whitespace-nowrap text-[24px] font-[400] text-start p-1 pb-[6px] cursor-pointer"
+              className="relative w-full whitespace-nowrap md:text-[24px] font-[400] text-start p-1 pb-[6px] cursor-pointer"
             >
               <motion.span
                 className="flex items-center gap-3"
