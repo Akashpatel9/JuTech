@@ -1,4 +1,3 @@
-"use client";
 import { motion } from "framer-motion";
 
 const data = [
@@ -10,11 +9,7 @@ const data = [
 
 export default function Deployment() {
   return (
-<<<<<<< HEAD
     <div className="relative hidden md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden md:flex items-center justify-center">
-=======
-    <div className="relative  md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center">
->>>>>>> 26e50d5e842a00f850f0818a06745c210a491465
       <div className="flex flex-col  gap-6 z-10 max-w-md w-full">
         {data.map((item, index) => (
           <motion.div
