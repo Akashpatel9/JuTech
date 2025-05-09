@@ -8,6 +8,7 @@ const cards = [
     title: "Sumofame",
     img: "/images/sumoFame.png",
     imgHeight: "h-[57px]",
+    link:"https://sumofame.com",
     description: "Marketing & Content\nCreation",
     svg: <svg width="213" height="213" viewBox="0 0 213 213" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_f_1_943)">
@@ -32,6 +33,7 @@ const cards = [
     title: "Resource Solution",
     img: "/images/G.png",
     imgHeight: "h-[51px]",
+    link:"https://goodluck.agency",
     description: "Recruitment\n& Staffing",
     svg: <svg width="213" height="213" viewBox="0 0 213 213" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_f_1_1214)">
@@ -50,6 +52,7 @@ const cards = [
     title: "Akashkash",
     img: "/images/Lion.png",
     imgHeight: "h-[53px]",
+    link:"https://fanollywood.com",
     description: "Ad Films\n& Photography",
     svg: <svg width="213" height="213" viewBox="0 0 213 213" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_f_1_1230)">
@@ -68,6 +71,7 @@ const cards = [
     title: "Consultation",
     img: "/images/human.png",
     imgHeight: "h-[50px]",
+    link:"https://akashkash.com",
     description: "Business strategy\n& digital transformation",
     svg: <svg width="213" height="213" viewBox="0 0 213 213" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_f_1_1244)">
@@ -184,7 +188,8 @@ export default function CollaborateSection() {
               }}
             >
               <Link
-                to="#"
+              target="_blank"
+                to={card.link}
                 className="group w-full relative overflow-hidden aspect-square rounded-[42px] bg-[#F6F6F9] px-[33px] py-[14px] flex flex-col justify-between"
               >
                 <div className="flex items-center justify-between">

@@ -49,18 +49,22 @@ const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
     }
   }, [isVisibleCTASection]);
 
-
   const toggleForm = () => {
+    console.log("clicked")
     setHovering((prev) => !prev);
     setIsVisibleCTASection(false);
   };
 
   return (
-    <section id="contact" className="relative bg-[#F6F6F9] rounded-[30px] pt-[105px] py-20 pl-[84px] mt-20 overflow-hidden">
+    <section
+      id="contact"
+      className="relative bg-[#F6F6F9] rounded-[30px] md:pt-[105px] md:py-20 pt-10 pl-10 py-10 md:pl-[84px] mt-20 overflow-hidden"
+    >
       {/* Text Section */}
       <div className="m:w-[839px]">
         <h2 className="md:text-[72px] text-2xl font-normal md:leading-20">
-          <motion.span className="bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent"
+          <motion.span
+            className="bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent"
             style={{ backgroundSize: "200% 100%" }}
             animate={{
               backgroundPosition: ["0% center", "100% center", "0% center"],
@@ -79,14 +83,30 @@ const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
         </h2>
         <motion.button
           onClick={toggleForm}
-          className="py-[10px] group px-[16px] mt-[32px] bg-black rounded-[8px] text-white flex items-center gap-2"
+          className="py-[10px] group px-[16px] md:mt-[32px] mt-6 bg-black rounded-[8px] text-white flex items-center gap-2"
           whileHover={{
             scale: 1.05,
             transition: { duration: 0.2 },
           }}
           whileTap={{ scale: 0.95 }}
         >
-          <span>Let's Talk</span>
+          <span className="flex items-center gap-2">
+            {" "}
+            <svg
+              className="mt-[2px]"
+              width="16"
+              height="16"
+              viewBox="0 0 19 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17.9415 12.8684L13.505 10.8804L13.4927 10.8748C13.2624 10.7763 13.0112 10.7367 12.7617 10.7598C12.5123 10.7828 12.2725 10.8676 12.0641 11.0066C12.0396 11.0228 12.016 11.0404 11.9935 11.0594L9.70131 13.0135C8.24915 12.3081 6.74991 10.8202 6.04455 9.38684L8.00148 7.05981C8.02031 7.03627 8.03821 7.01273 8.05516 6.9873C8.19117 6.77946 8.27369 6.54122 8.29538 6.29378C8.31707 6.04634 8.27725 5.79738 8.17947 5.56905V5.55774L6.18581 1.1137C6.05655 0.815416 5.83429 0.56694 5.5522 0.40536C5.27012 0.24378 4.94334 0.177764 4.62065 0.217165C3.34457 0.385083 2.17325 1.01177 1.32545 1.98018C0.477661 2.94859 0.0113732 4.1925 0.0136804 5.47958C0.0136804 12.957 6.09729 19.0406 13.5747 19.0406C14.8617 19.0429 16.1057 18.5766 17.0741 17.7288C18.0425 16.881 18.6692 15.7097 18.8371 14.4336C18.8766 14.111 18.8107 13.7843 18.6493 13.5023C18.4879 13.2202 18.2396 12.9979 17.9415 12.8684ZM13.5747 17.5338C10.3788 17.5303 7.31475 16.2592 5.05491 13.9993C2.79506 11.7395 1.52395 8.67548 1.52046 5.47958C1.51691 4.55997 1.84823 3.6705 2.45253 2.9773C3.05682 2.2841 3.89278 1.83456 4.80429 1.71264C4.80392 1.7164 4.80392 1.72018 4.80429 1.72394L6.78193 6.1501L4.83536 8.47995C4.81561 8.50268 4.79766 8.52693 4.78169 8.55246C4.63997 8.76993 4.55683 9.02031 4.54033 9.27935C4.52383 9.53839 4.57453 9.7973 4.68751 10.031C5.54072 11.776 7.29894 13.5211 9.06281 14.3733C9.29821 14.4853 9.55862 14.5342 9.8186 14.5154C10.0786 14.4966 10.3292 14.4106 10.546 14.266C10.5702 14.2497 10.5935 14.2321 10.6157 14.2132L12.9051 12.2601L17.3312 14.2424C17.3312 14.2424 17.3388 14.2424 17.3416 14.2424C17.2212 15.1552 16.7723 15.9929 16.079 16.5987C15.3857 17.2045 14.4954 17.5369 13.5747 17.5338Z"
+                fill="white"
+              />
+            </svg>
+            Let's Talk
+          </span>
           <motion.span
             animate={{
               rotate: hovering ? 180 : 0,
@@ -113,8 +133,7 @@ const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
       >
         {!hovering ? (
           <svg
-            width="506"
-            height="523"
+            className="md:w-[506px] md:h-[523px] w-full"
             viewBox="0 0 506 523"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -257,7 +276,7 @@ const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
       {/* ====================================== */}
       {/* Tech logos */}
       <motion.div
-        className="absolute -top-40 bottom-0 right-[-30px] flex flex-col gap-5 flex-wrap md:h-[596px] -rotate-45 items-center justify-center overflow-hidden"
+        className="absolute -top-20 md:-top-40 bottom-0 right-[-30px] flex flex-col gap-5 flex-wrap md:h-[596px] -rotate-45 items-center justify-center overflow-hidden"
         animate={{
           x: hovering ? 40 : 0,
           opacity: hovering ? 0.4 : 1,
@@ -276,8 +295,8 @@ const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
         >
           {/* Duplicate logos exactly once for seamless scroll */}
           {[...techLogos, ...techLogos].map((logo, idx) => (
-            <div key={idx} className="md:w-[90px] w-10 aspect-square">
-              <div className="rounded-full w-full rotate-90 aspect-square bg-[#F5F5F5] border-[4px] border-white flex items-center justify-center p-4">
+            <div key={idx} className="md:w-[90px] w-12 aspect-square">
+              <div className="rounded-full w-full rotate-90 aspect-square bg-[#F5F5F5] border-[4px] border-white flex items-center justify-center md:p-4 p-2">
                 <img src={logo} className="w-full" alt="" />
               </div>
             </div>
@@ -286,7 +305,7 @@ const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
       </motion.div>
       {/* ---------------- */}
       <motion.div
-        className="absolute -top-40 bottom-0 right-30 flex flex-col gap-5 flex-wrap md:h-[596px] -rotate-45 items-center justify-center overflow-hidden"
+        className="absolute -top-60 md:-top-40 bottom-0 md:right-30 right-32 flex flex-col gap-5 flex-wrap md:h-[596px] -rotate-45 items-center justify-center overflow-hidden"
         animate={{
           x: hovering ? 40 : 0,
           opacity: hovering ? 0.4 : 1,
@@ -305,8 +324,8 @@ const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
         >
           {/* Duplicate logos exactly once for seamless scroll */}
           {[...techLogoss, ...techLogoss].map((logo, idx) => (
-            <div key={idx} className="md:w-[90px] w-10 aspect-square">
-              <div className="rounded-full w-full rotate-90 aspect-square bg-[#F5F5F5] border-[4px] border-white flex items-center justify-center p-4">
+            <div key={idx} className="md:w-[90px] w-12 aspect-square">
+              <div className="rounded-full w-full rotate-90 aspect-square bg-[#F5F5F5] border-[4px] border-white flex items-center justify-center md:p-4 p-2">
                 <img src={logo} className="w-full" alt="" />
               </div>
             </div>

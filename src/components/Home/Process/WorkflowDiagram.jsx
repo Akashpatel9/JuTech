@@ -34,7 +34,7 @@ export default function WorkflowDiagram() {
   }, [visibleSteps, workflowSteps.length]);
 
   return (
-    <div className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center">
+    <div className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden hidden md:flex items-center justify-center">
       <div className="z-10 flex flex-col items-center w-[425px] justify-between mx-auto gap-6 mt-10">
         {workflowSteps.map((step, index) => (
           <motion.div 

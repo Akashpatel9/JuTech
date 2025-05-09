@@ -13,8 +13,8 @@ import ProcessTimeline from "../components/Home/ProcessTimeline";
 const Home = () => {
   const [isVisibleCTASection, setIsVisibleCTASection] = useState(false);
   return (
-    <>
-      <div className="px-5 md:px-[80px] select-none">
+    <div className="select-none">
+      <div className="px-5 md:px-[80px]">
         <NavBar setIsVisibleCTASection={setIsVisibleCTASection} />
         <div className="">
           <HeroSection />
@@ -28,7 +28,7 @@ const Home = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -138,7 +138,7 @@ const ProcessTimeline = () => {
   };
 
   return (
-    <div id="process" className="w-full mx-auto p-8 bg-white font-sans">
+    <div id="process" className="w-full mx-auto md:p-8 mb-20 md:mb-0 bg-white font-sans">
       <h2 className="text-center -mb-3">
         <motion.span 
           className="bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent md:text-[52px] text-4xl font-normal"
@@ -168,7 +168,7 @@ const ProcessTimeline = () => {
             {steps.map((step, idx) => (
               <div
                 key={idx}
-                className="relative grid grid-cols-5 cursor-pointer"
+                className="relative grid grid-cols-5 cursor-pointer group"
                 onClick={() => handleStepClick(step.id)}
               >
                 <div
@@ -184,12 +184,12 @@ const ProcessTimeline = () => {
                     0{idx + 1}
                   </h1>
                 </div>
-                <div className="col-span-4 px-4">
+                <div className="col-span-4 px-4 pl-10">
                   <div>
-                    <img src={step.icon} alt={step.title} />
+                    <img className={`h-5 aspect-square`} src={step.icon} alt={step.title} />
                   </div>
                   <h4
-                    className={`mt-2 text-[20px] font-medium ${
+                    className={`mt-2 text-md font-medium ${
                       step.id === activeStep
                         ? "bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] text-transparent bg-clip-text"
                         : "text-[#18191C]"
@@ -197,12 +197,12 @@ const ProcessTimeline = () => {
                   >
                     {step.title}
                   </h4>
-                  {step.id === activeStep && step.goal && (
-                    <p className="text-sm text-gray-600 mt-2">
-                      <span className="font-medium text-[16px]">Goal: </span>
-                      {step.goal}
-                    </p>
-                  )}
+                  <p className={`text-sm text-gray-600 mt-2 transition-opacity duration-200 ${
+                    step.id === activeStep ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                  }`}>
+                    <span className="font-medium text-[16px]">Goal: </span>
+                    {step.goal}
+                  </p>
                 </div>
               </div>
             ))}

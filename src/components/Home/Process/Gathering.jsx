@@ -88,7 +88,7 @@ export default function Gathering() {
   return (
     <div
       ref={ref}
-      className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden"
+      className="relative hidden md:block md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden"
     >
       {/* Process cards */}
       {steps.map((step, index) => (

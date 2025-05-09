@@ -181,7 +181,7 @@ export default function ServicesSection() {
             onClick={() => handleServiceClick(service)}
             onMouseEnter={() => setIsHovered(idx)}
             onMouseLeave={() => setIsHovered(null)}
-            className="relative w-full whitespace-nowrap text-[24px] font-[400] text-start p-1 pb-[6px]"
+            className="relative w-full whitespace-nowrap text-xl md:text-[24px] font-[400] text-start p-1 pb-[6px]"
           >
             <motion.span
               className="flex items-center gap-3"
@@ -192,8 +192,9 @@ export default function ServicesSection() {
                 
               }}
             >
+              
               <img
-                className={`${activeService !== service && "opacity-50"}`}
+                className={`${activeService !== service && "opacity-50"} ${services[service].svg === "development2" ? "scale-70" :""}`}
                 width={24}
                 src={`/svgs/${services[service].svg}.svg`}
                 alt=""

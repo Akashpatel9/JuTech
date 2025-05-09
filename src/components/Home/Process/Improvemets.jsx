@@ -32,7 +32,7 @@ export default function Improvement() {
 
   return (
     <div 
-      className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden flex items-center justify-center"
+      className="relative md:w-3/4 bg-[#F6F6F9] rounded-[30px] overflow-hidden hidden md:flex items-center justify-center"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >

@@ -54,14 +54,6 @@ const HeroSection = () => {
               strokeDasharray: "0 1",
               strokeDashoffset: [0, -1],
             }}
-            transition={
-              {
-                // duration: 2,
-                // ease: "easeInOut",
-                // repeat: Infinity,
-                // repeatType: "reverse"
-              }
-            }
           />
           <defs>
             <linearGradient
