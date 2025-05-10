@@ -57,13 +57,13 @@ const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
   return (
     <section
       id="contact"
-      className="relative bg-[#F6F6F9] rounded-[30px] pt-[105px] py-20 md:pl-[84px] pl-[30px] mt-20 overflow-hidden"
+      className="bg-[#F6F6F9] relative rounded-[30px] md:pt-[105px] md:py-20 py-16 md:pl-[84px] px-4 md:px-0 mt-20 overflow-hidden"
     >
       {/* Text Section */}
-      <div className="m:w-[839px]">
+      <div className=" relative md:w-[839px]">
         <h2 className="md:text-[72px] text-2xl font-normal md:leading-20">
           <motion.span
-            className="bg-gradient-to-r from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent"
+            className="bg-gradient-to-r from-[#C0AEFE] mr-2 via-[#6D39F3] to-[#3956EB] bg-clip-text text-transparent"
             style={{ backgroundSize: "200% 100%" }}
             animate={{
               backgroundPosition: ["0% center", "100% center", "0% center"],
@@ -100,6 +100,72 @@ const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
             ↓
           </motion.span>
         </motion.button>
+
+        {/* Tech logos */}
+        <motion.div
+          className={`absolute -rotate-45 flex flex-col md:gap-5 gap-2 flex-wrap items-center justify-center overflow-hidden
+          md:bottom-0 md:right-[-400px] md:h-[596px]
+          ${hovering ? "-top-[1150px]" : "-top-[1200px]"} 
+          md:-top-[300px]`}
+          animate={{
+            x: hovering ? 40 : 0,
+            opacity: hovering ? 0.4 : 1,
+          }}
+          transition={{ duration: 0.5 }}
+        >
+          {/* Scrolling container */}
+          <motion.div
+            className="flex flex-col gap-5"
+            animate={{ y: ["0%", "10%"] }}
+            transition={{
+              repeat: Infinity,
+              duration: 10,
+              ease: "linear",
+            }}
+          >
+            {/* Duplicate logos exactly once for seamless scroll */}
+            {[...techLogos, ...techLogos].map((logo, idx) => (
+              <div key={idx} className="md:w-[90px] w-10 aspect-square">
+                <div className="rounded-full w-full rotate-90 aspect-square bg-[#F5F5F5] border-[4px] border-white flex items-center justify-center md:p-4 p-1">
+                  <img src={logo} className="w-full" alt="" />
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* ---------------- */}
+        <motion.div
+          className={`absolute -rotate-45 flex flex-col md:gap-5 gap-2 flex-wrap items-center justify-center overflow-hidden
+          md:bottom-0 md:-right-[300px] md:h-[596px]
+          ${hovering ? "-top-[1080px]" : "-top-[1130px]"} 
+          md:-top-[230px]`}
+          animate={{
+            x: hovering ? 40 : 0,
+            opacity: hovering ? 0.4 : 1,
+          }}
+          transition={{ duration: 0.5 }}
+        >
+          {/* Scrolling container */}
+          <motion.div
+            className="flex flex-col gap-5"
+            animate={{ y: ["0%", "-10%"] }}
+            transition={{
+              repeat: Infinity,
+              duration: 10,
+              ease: "linear",
+            }}
+          >
+            {/* Duplicate logos exactly once for seamless scroll */}
+            {[...techLogoss, ...techLogoss].map((logo, idx) => (
+              <div key={idx} className="md:w-[90px] w-10 aspect-square">
+                <div className="rounded-full w-full rotate-90 aspect-square bg-[#F5F5F5] border-[4px] border-white flex items-center justify-center md:p-4 p-1">
+                  <img src={logo} className="w-full" alt="" />
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
       </div>
 
       <motion.div
@@ -228,66 +294,6 @@ const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
       </motion.div>
 
       {/* ====================================== */}
-      {/* Tech logos */}
-      <motion.div
-        className={`absolute -top-40  bottom-0 right-[-30px] 
-          ${hovering && "md:-top-40  md:bottom-0 md:right-[-30px] -top-280"} 
-        flex flex-col gap-5 flex-wrap md:h-[596px] -rotate-45 items-center justify-center overflow-hidden`}
-        animate={{
-          x: hovering ? 40 : 0,
-          opacity: hovering ? 0.4 : 1,
-        }}
-        transition={{ duration: 0.5 }}
-      >
-        {/* Scrolling container */}
-        <motion.div
-          className="flex flex-col gap-5"
-          animate={{ y: ["0%", "50%"] }}
-          transition={{
-            repeat: Infinity,
-            duration: 30,
-            ease: "linear",
-          }}
-        >
-          {/* Duplicate logos exactly once for seamless scroll */}
-          {[...techLogos, ...techLogos].map((logo, idx) => (
-            <div key={idx} className="md:w-[90px] w-10 aspect-square">
-              <div className="rounded-full w-full rotate-90 aspect-square bg-[#F5F5F5] border-[4px] border-white flex items-center justify-center md:p-4 p-1">
-                <img src={logo} className="w-full" alt="" />
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </motion.div>
-      {/* ---------------- */}
-      <motion.div
-        className={`absolute -top-40  bottom-0 md:right-30 right-10  flex flex-col gap-5 flex-wrap md:h-[596px] -rotate-45 items-center justify-center overflow-hidden`}
-        animate={{
-          x: hovering ? 40 : 0,
-          opacity: hovering ? 0.4 : 1,
-        }}
-        transition={{ duration: 0.5 }}
-      >
-        {/* Scrolling container */}
-        <motion.div
-          className="flex flex-col gap-5"
-          animate={{ y: ["0%", "-50%"] }}
-          transition={{
-            repeat: Infinity,
-            duration: 30,
-            ease: "linear",
-          }}
-        >
-          {/* Duplicate logos exactly once for seamless scroll */}
-          {[...techLogoss, ...techLogoss].map((logo, idx) => (
-            <div key={idx} className="md:w-[90px] w-10 aspect-square">
-              <div className="rounded-full w-full rotate-90 aspect-square bg-[#F5F5F5] border-[4px] border-white flex items-center justify-center md:p-4 p-1">
-                <img src={logo} className="w-full" alt="" />
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </motion.div>
 
       {/* ===================================================== */}
 
@@ -322,10 +328,10 @@ const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
                 },
               },
             }}
-            className="border-t-[2px] border-[#EAEAEA] flex md:flex-row flex-col items-start justify-between md:mt-20 pt-20 md:pb-20 pb-10 overflow-hidden"
+            className="border-t-[2px] border-[#EAEAEA] flex md:flex-row flex-col items-start justify-between mt-20 md:pt-20 md:pb-20 pb-10 overflow-hidden"
           >
             <motion.div
-              className="md:w-1/2 w-full pt-20"
+              className="md:w-1/2 w-full md:pt-20 pt-10"
               initial={{ x: -50, opacity: 0 }}
               animate={{
                 x: 0,
@@ -344,7 +350,7 @@ const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
               }}
             >
               <h1 className="font-normal text-[48px]">Contact Us</h1>
-              <p className="text-[20px] w-2/3 font-normal text-[#0C0E12] mt-[15px]">
+              <p className="text-[20px] md:w-2/3 font-normal text-[#0C0E12] mt-[15px]">
                 The Future of Your Financial Solutions and Strategies is not
                 just an exciting and transformative concept it represents a
                 groundbreaking.
@@ -352,7 +358,7 @@ const CTASection = ({ isVisibleCTASection, setIsVisibleCTASection }) => {
             </motion.div>
 
             <motion.div
-              className="md:w-1/2 w-full  pr-[30px] md:p-10 md:mt-0 mt-10 space-y-6"
+              className="md:w-1/2 w-full  md:pr-[30px] md:p-10 md:mt-0 mt-10 space-y-6"
               initial={{ x: 50, opacity: 0 }}
               animate={{
                 x: 0,

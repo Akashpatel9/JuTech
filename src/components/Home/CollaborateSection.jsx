@@ -530,7 +530,7 @@ export default function CollaborateSection() {
       <div className="">
         <div className="w-full md:flex">
           {/* Heading */}
-          <motion.div className="md:w-1/2" variants={textVariants}>
+          <motion.div className="md:w-1/2 " variants={textVariants}>
             <h2 className="md:text-[52px] text-4xl font-[400] md:leading-13">
               We Also
               <br />
@@ -557,7 +557,7 @@ export default function CollaborateSection() {
             className="md:w-1/2 md:flex mt-5 md:mt-0 items-center justify-end"
             variants={textVariants}
           >
-            <p className="text-[#0C0E12]/60 text-[20px] font-normal w-3/4">
+            <p className="text-[#0C0E12]/60 text-[20px] font-normal md:w-3/4">
               Through our subsidiary companies, we deliver fully integrated
               business solutions, ensuring every aspect of your business is
               expertly managed for optimal success.

@@ -45,13 +45,13 @@ const ProjectInitiation = ({ data }) => {
   return (
     <div
       ref={containerRef}
-      className="relative hidden md:block md:w-full  bg-[#F6F6F9] rounded-[30px] overflow-hidden px-[85px] py-[188px]"
+      className="relative hidden md:w-full  bg-[#F6F6F9] rounded-[30px] overflow-hidden px-[85px] h-full md:flex items-center justify-center"
     >
       {/* Gradient background overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-indigo-50/30 via-purple-50/30 to-pink-50/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-indigo-50/30 via-purple-50/30 to-pink-50/30 h-fit" />
 
       {/* Vertical timeline */}
-      <div className="relative z-10">
+      <div className="relative z-10 my-auto">
         {/* Base timeline line */}
         <div className="absolute left-6 top-10 bottom-10 w-[3px] bg-[#DEDEDE]" />
 

@@ -437,7 +437,7 @@ const ProcessTimeline = () => {
   };
 
   return (
-    <div id="process" className="w-full mx-auto p-8 bg-white font-sans">
+    <div id="process" className="w-full mx-auto md:p-8 bg-white font-sans">
       <h2 className="text-center -mb-3">
         <motion.span
           className="bg-gradient-to-r from-[#4885EF] via-[#C560CF] to-[#DA5381] bg-clip-text text-transparent md:text-[52px] text-4xl font-normal"
@@ -461,30 +461,30 @@ const ProcessTimeline = () => {
       <div className="flex flex-col md:flex-row gap-8">
         {/* Left sidebar with steps */}
         <div className="md:w-1/3 relative">
-          <div className="absolute left-[20%] -translate-[1.6px] top-0 bottom-0 w-[2px] bg-[#ECEEF3]"></div>
+          <div className="absolute left-[16.5%] -translate-[1.6px] top-0 bottom-0 w-[2px] bg-[#ECEEF3]"></div>
 
-          <div className="space-y-0">
+          <div className="space-y-8">
             {steps.map((step, idx) => (
               <div
                 key={idx}
-                className="relative grid grid-cols-5 cursor-pointer"
+                className="relative grid grid-cols-6 cursor-pointer group"
                 onClick={() => handleStepClick(step.id)}
               >
                 <div
-                  className={`h-full col-span-1 flex items-center ${
+                  className={`h-full col-span-1 flex pr-8 items-center ${
                     step.id === activeStep && "border-r-[2px] border-[#CC41E4]"
                   }`}
                 >
                   <h1
-                    className={`font-medium text-[30px] px-1 mb-4 ${
+                    className={`font-medium h-full w-full text-[30px] flex items-center justify-center ${
                       step.id !== activeStep && "text-[#E6E6E6]"
                     }`}
                   >
                     0{idx + 1}
                   </h1>
                 </div>
-                <div className="col-span-4 pl-8 py-6">
-                  <div>
+                <div className="col-span-5 text-xl flex-1 pl-8">
+                  <div className="w-fit">
                     <img
                       className="h-5 aspect-square"
                       src={step.icon}
@@ -500,8 +500,8 @@ const ProcessTimeline = () => {
                   >
                     {step.title}
                   </h4>
-                  {step.id === activeStep && step.goal && (
-                    <p className="text-sm text-gray-600 mt-2">
+                  {step.goal && (
+                    <p className={`text-sm text-gray-600 mt-2 ${step.id === activeStep ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'} transition-opacity duration-200`}>
                       <span className="font-medium text-[16px]">Goal: </span>
                       {step.goal}
                     </p>

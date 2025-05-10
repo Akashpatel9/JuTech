@@ -9,22 +9,22 @@ export default function Gathering() {
     {
       number: "01",
       title: "Conduct workshops and interviews",
-      position: "top-[50px] left-16 rotate-[6.82deg]",
+      position: "top-[0px] left-16 rotate-[6.82deg]",
     },
     {
       number: "02",
       title: "Create a product backlog or requirements document",
-      position: "top-[240px] right-16 rotate-[-9.9deg]",
+      position: "top-[260px] right-16 rotate-[-9.9deg]",
     },
     {
       number: "03",
       title: "Define user stories with acceptance criteria",
-      position: "top-[460px] left-16 rotate-[6.82deg]",
+      position: "top-[520px] left-16 rotate-[6.82deg]",
     },
     {
       number: "04",
       title: "Prioritize features",
-      position: "top-[690px] right-16 rotate-[-9.9deg]",
+      position: "top-[700px] right-16 rotate-[-9.9deg]",
     },
   ];
 
@@ -88,65 +88,67 @@ export default function Gathering() {
   return (
     <div
       ref={ref}
-      className="relative hidden md:block md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden "
+      className="relative hidden md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden  md:flex flex-col items-center justify-center"
     >
-      {/* Process cards */}
-      {steps.map((step, index) => (
-        <div key={index}>
-          <motion.div
-            className={`absolute ${step.position} z-10 w-[336px] bg-white shadow-xl rounded-[30px] px-[25px] py-[25px]`}
-            initial={{ opacity: 1, x: index % 2 === 0 ? -30 : 30 }}
-            custom={index}
-            animate={controls}
-          >
+      <div className="relative w-full h-5/6">
+        {/* Process cards */}
+        {steps.map((step, index) => (
+          <div key={index}>
             <motion.div
-              className="font-normal text-[28px] text-center mb-4"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                transition: {
-                  delay: index * 1,
-                  duration: 0.5,
-                },
-              }}
+              className={`absolute ${step.position} z-10 w-[336px] bg-white shadow-xl rounded-[30px] px-[25px] py-[25px]`}
+              initial={{ opacity: 1, x: index % 2 === 0 ? -30 : 30 }}
+              custom={index}
+              animate={controls}
             >
-              {step.number}
+              <motion.div
+                className="font-normal text-[28px] text-center mb-4"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: index * 1,
+                    duration: 0.5,
+                  },
+                }}
+              >
+                {step.number}
+              </motion.div>
+              <motion.div
+                className="py-[25px] px-[34px] rounded-[26px] font-normal text-[20px]"
+                initial={{
+                  background: "#E5E5E5",
+                  color: "#666666",
+                  opacity: 0,
+                  y: 10,
+                }}
+                animate={{
+                  background: [
+                    "#E5E5E5",
+                    "#D4C4FF",
+                    "#B8A3FF",
+                    "linear-gradient(to right, #C0AEFE, #6D39F3, #3956EB)",
+                  ],
+                  color: ["#666666", "#666666", "#666666", "white"],
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: index,
+                  duration: 1.2,
+                  times: [0],
+                  ease: "easeInOut",
+                }}
+              >
+                {step.title}
+              </motion.div>
             </motion.div>
-            <motion.div
-              className="py-[25px] px-[34px] rounded-[26px] font-normal text-[20px]"
-              initial={{
-                background: "#E5E5E5",
-                color: "#666666",
-                opacity: 0,
-                y: 10,
-              }}
-              animate={{
-                background: [
-                  "#E5E5E5",
-                  "#D4C4FF",
-                  "#B8A3FF",
-                  "linear-gradient(to right, #C0AEFE, #6D39F3, #3956EB)",
-                ],
-                color: ["#666666", "#666666", "#666666", "white"],
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                delay: index,
-                duration: 1.2,
-                times: [0],
-                ease: "easeInOut",
-              }}
-            >
-              {step.title}
-            </motion.div>
-          </motion.div>
-        </div>
-      ))}
+          </div>
+        ))}
+      </div>
 
       <motion.div
-        className={`absolute top-44 overflow-hidden left-44`}
+        className={`absolute top-64 overflow-hidden left-44`}
         initial={{ opacity: 0, scaleY: 0, originY: 0 }}
         custom={svgIndex}
         animate={lineControls}

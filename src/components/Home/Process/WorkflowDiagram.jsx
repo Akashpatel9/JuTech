@@ -35,7 +35,7 @@ export default function WorkflowDiagram() {
 
   return (
     <div className="relative hidden md:flex md:w-full h-full bg-[#F6F6F9] rounded-[30px] overflow-hidden  items-center justify-center">
-      <div className="z-10 flex flex-col items-center w-[425px] justify-between mx-auto gap-6 mt-10">
+      <div className="z-10 flex flex-col items-center w-[425px] justify-between mx-auto gap-6 mt-5">
         {workflowSteps.map((step, index) => (
           <motion.div
             key={step.id}
@@ -49,12 +49,12 @@ export default function WorkflowDiagram() {
             transition={{ duration: 0.5 }}
           >
             {/* Card with gradient background */}
-            <div className="relative h-[150px] pt-5 flex items-center justify-center rounded-[37px] bg-gradient-to-br from-indigo-400 to-purple-600 text-white text-center shadow-lg w-full">
+            <div className="relative h-[125px] pt-5 flex items-center justify-center rounded-[37px] bg-gradient-to-br from-indigo-400 to-purple-600 text-white text-center shadow-lg w-full">
               {/* Circle with step number */}
-              <div className="absolute -top-14 left-1/2 transform -translate-x-1/2 flex items-center justify-center w-[84px] aspect-square rounded-full bg-gradient-to-b from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] text-white font-medium border-5 border-[#F4F4F7]">
+              <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 -translate-y-0  flex items-center justify-center w-[78px] aspect-square rounded-full bg-gradient-to-b from-[#C0AEFE] via-[#6D39F3] to-[#3956EB] text-white font-medium border-5 border-[#F4F4F7]">
                 <span className="text-2xl">{step.id}</span>
               </div>
-              <div className="font-normal text-[25px] px-4">{step.text}</div>
+              <div className="font-normal text-[22px] px-4">{step.text}</div>
             </div>
             {/* Connector line (if not the last item) */}
             {index < workflowSteps.length - 1 && (
